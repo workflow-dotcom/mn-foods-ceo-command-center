@@ -989,49 +989,35 @@ button{cursor:pointer}
 /* ============================================================
    USERS
 ============================================================ */
-
 const USERS = [
   {
-    name:"Dianne",
-    username:"Dianne",
-    role:"Admin",
-    email:"workflow@ariahgroup.com",
-    passwordHash:null
+    name: "Dianne",
+    username: "Dianne00",
+    role: "Admin",
+    email: "workflow@ariahgroup.com",
+    passwordHash: null
   },
   {
-    name:"Naveen",
-    username:"Naveen",
-    role:"CEO",
-    email:"naveenm@ariahgroup.com",
-    passwordHash:null
+    name: "Naveen",
+    username: "Naveen00",
+    role: "CEO",
+    email: "naveenm@ariahgroup.com",
+    passwordHash: null
   },
   {
-    name:"Dinos",
-    username:"Dinos00",
-    role:"Staff",
-    email:"dinos@ariahgroup.com",
-    passwordHash:"7426b915b762112d10cc38d1a3928bb4e980ea796bbe04875c984bd526791f39"
+    name: "Dinos",
+    username: "Dinos00",
+    role: "Staff",
+    email: "dinos@ariahgroup.com",
+    passwordHash: "7426b915b762112d10cc38d1a3928bb4e980ea796bbe04875c984bd526791f39"
   },
   {
-    name:"Albert",
-    username:"Albert00",
-    role:"Staff",
-    email:"albert@ariahgroup.com",
-    passwordHash:"f137febd193de169e9d796f07c9492957f5ccff5f210a39779828376b244ef4e"
+    name: "Albert",
+    username: "Albert00",
+    role: "Staff",
+    email: "albert@ariahgroup.com",
+    passwordHash: "f137febd193de169e9d796f07c9492957f5ccff5f210a39779828376b244ef4e"
   }
-];
-
-const LOCS = [
-  "BK 1869",
-  "BK 2127",
-  "BK 20769"
-];
-
-const DEPTS = [
-  "Admin",
-  "Purchasing",
-  "Maintenance & Repair",
-  "General"
 ];
 
 
@@ -1211,62 +1197,57 @@ async function login(){
   const error =
     document.getElementById("loginError");
 
-  /*
-    Dianne and Naveen are currently admin/CEO prototype
-    accounts. They can be connected to proper backend
-    authentication later.
-  */
-
   let user = USERS.find(
     u => u.username.toLowerCase() === username.toLowerCase()
   );
 
   if(!user){
+    error.classList.add("show");
+    return;
+  }
+
+  /*
+    Admin / CEO accounts
+  */
+  if(user.username === "Dianne00" || user.username === "Naveen00"){
+
+    if(password !== "BKADMIN@@"){
+      error.classList.add("show");
+      return;
+    }
+
+  }
+
+  /*
+    Staff accounts use their existing SHA-256 password hashes
+  */
+  else if(user.passwordHash){
+
+    const enteredHash = await sha256(password);
+
+    if(enteredHash !== user.passwordHash){
+      error.classList.add("show");
+      return;
+    }
+
+  }
+
+  else{
 
     error.classList.add("show");
     return;
 
   }
 
-  if(user.passwordHash){
-
-    const enteredHash = await sha256(password);
-
-    if(enteredHash !== user.passwordHash){
-
-      error.classList.add("show");
-      return;
-
-    }
-
-  }else{
-
-    /*
-      Prototype-only fallback for Dianne/Naveen.
-      Replace with backend authentication before production.
-    */
-
-    if(password !== "admin"){
-
-      error.classList.add("show");
-      return;
-
-    }
-
-  }
-
   error.classList.remove("show");
 
   state.user = user.name;
-
   state.loggedIn = true;
 
   save();
-
   showApp();
 
   toast("Welcome, " + user.name + "!");
-
 }
 
 
