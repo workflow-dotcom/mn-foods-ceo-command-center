@@ -76,6 +76,140 @@ let state=JSON.parse(localStorage.getItem("mnfoods_v1")||"null")||{
  connections:{email:false,calendar:false}
 };
 let page="home";
+  // ==================== GOOGLE CALENDAR ====================
+const GOOGLE_CLIENT_ID = "800135193925-jes7bcbtlhf9s023k6lifj1f9asmd98m.apps.googleusercontent.com";
+const CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar";
+
+let calendarTokenClient = null;
+let calendarAccessToken = null;
+
+function initializeGoogleCalendar() {
+  if (!window.google || !google.accounts || !google.accounts.oauth2) {
+    toast("Google Calendar is still loading. Please try again.");
+    return false;
+  }
+
+  if (!calendarTokenClient) {
+    calendarTokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: GOOGLE_CLIENT_ID,
+      scope: CALENDAR_SCOPE,
+      callback: ""
+    });
+  }
+
+  return true;
+}
+
+function connectCalendar() {
+  if (!initializeGoogleCalendar()) return;
+
+  calendarTokenClient.callback = async (response) => {
+    if (response.error) {
+      console.error("Google authorization error:", response);
+      toast("Google Calendar authorization was cancelled.");
+      return;
+    }
+
+    calendarAccessToken = response.access_token;
+
+    try {
+      await createDailyCalendarReminder();
+
+      state.connections.calendar = true;
+      state.activity.unshift(
+        `${state.user} connected Google Calendar and created the daily CEO reminder`
+      );
+      save();
+      toast("Google Calendar connected!");
+      render();
+
+    } catch (error) {
+      console.error("Calendar error:", error);
+      toast("Google Calendar connection failed.");
+    }
+  };
+
+  calendarTokenClient.requestAccessToken({
+    prompt: calendarAccessToken ? "" : "consent"
+  });
+}
+
+async function createDailyCalendarReminder() {
+  if (!calendarAccessToken) {
+    throw new Error("No Google Calendar access token.");
+  }
+
+  const timeValue = state.reminder?.time || "08:00";
+  const [hours, minutes] = timeValue.split(":").map(Number);
+
+  // Start today at the selected reminder time.
+  // If today's time has already passed, start tomorrow.
+  const now = new Date();
+  let start = new Date();
+  start.setHours(hours, minutes, 0, 0);
+
+  if (start <= now) {
+    start.setDate(start.getDate() + 1);
+  }
+
+  const end = new Date(start.getTime() + 15 * 60 * 1000);
+
+  function localDateTime(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
+    const h = String(date.getHours()).padStart(2, "0");
+    const min = String(date.getMinutes()).padStart(2, "0");
+
+    return `${y}-${m}-${d}T${h}:${min}:00`;
+  }
+
+  const event = {
+    summary: "M&N Foods Daily CEO Reminder",
+    description:
+      "Review today's M&N Foods checklist, priority items, payments, purchasing, maintenance, and important tasks.",
+    start: {
+      dateTime: localDateTime(start),
+      timeZone: "America/New_York"
+    },
+    end: {
+      dateTime: localDateTime(end),
+      timeZone: "America/New_York"
+    },
+    recurrence: [
+      "RRULE:FREQ=DAILY"
+    ],
+    reminders: {
+      useDefault: false,
+      overrides: [
+        {
+          method: "popup",
+          minutes: 10
+        }
+      ]
+    }
+  };
+
+  const response = await fetch(
+    "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+    {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + calendarAccessToken,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(event)
+    }
+  );
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText);
+  }
+
+  return await response.json();
+}
+// ==================== END GOOGLE CALENDAR ====================
 function save(){localStorage.setItem("mnfoods_v1",JSON.stringify(state));}
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
 function today(){return new Date().toISOString().slice(0,10)}
@@ -171,11 +305,12 @@ function sendNudge(){let text=document.getElementById("n_text").value.trim();if(
 function readNudge(id){let n=state.nudges.find(x=>x.id===id);if(n)n.read=true;save();render()}
 function activityPage(){document.getElementById("activity").innerHTML=`<div class="card section"><h2>Recent Activity</h2><div class="activity" style="margin-top:8px">${state.activity.map(x=>`<div>• ${esc(x)}</div>`).join("")}</div></div>`}
 function settingsPage(){document.getElementById("settings").innerHTML=`<div class="grid"><div class="card section"><h2>👤 Users</h2><div class="sub">Four-person access model.</div><div style="margin-top:10px">${USERS.map(u=>`<div class="task"><div>👤</div><div><b>${u.name}</b><div class="task-meta">${u.role}${u.name==="Dianne"||u.name==="Naveen"?" • Priority access":" • Add / modify"}</div></div></div>`).join("")}</div></div><div class="card section"><h2>🔌 Integrations</h2><div class="notice">Choose your provider, then connect through OAuth. Do not put passwords or API secrets in this HTML file.</div><div class="field"><label>Email provider</label><select id="emailProvider"><option>Google Workspace / Gmail</option><option>Microsoft 365 / Outlook</option></select></div><div class="field" style="margin-top:8px"><label>Calendar provider</label><select id="calProvider"><option>Google Calendar</option><option>Microsoft 365 / Outlook Calendar</option></select></div><div class="integration"><div class="integration-row"><span>✉️ Email</span><span class="status">${state.connections.email?"Connected":"Ready for OAuth"}</span><button class="btn small" onclick="connect('email')">${state.connections.email?"Disconnect":"Connect Email"}</button></div><div class="integration-row"><span>📅 Calendar</span><span class="status">${state.connections.calendar?"Connected":"Ready for OAuth"}</span><button class="btn small" onclick="connect('calendar')">${state.connections.calendar?"Disconnect":"Connect Calendar"}</button></div></div></div></div>`}
-function connect(k){state.connections[k]=!state.connections[k];save();toast(state.connections[k]?"Connection marked ready":"Connection cleared");render()}
+function connect(k){   if(k==="calendar"){     connectCalendar();     return;   }    state.connections[k]=!state.connections[k];   save();   toast(state.connections[k]?"Connection marked ready":"Connection cleared");   render(); }
 function switchUser(){let i=USERS.findIndex(x=>x.name===state.user);state.user=USERS[(i+1)%USERS.length].name;save();toast("Switched to "+state.user);render()}
 function exportXLS(){let rows=[["Type","Title","Location","Department","Amount","Due/Status","Assigned"],...state.tasks.map(t=>["Task",t.title,t.loc,t.dept,"",t.due,t.assignee]),...state.payments.map(p=>["Payment",p.title,p.loc,"",p.amount,p.status,p.due]),...state.purchases.map(p=>["Purchase",p.title,p.loc,"",p.amount,p.status,p.requester])];let table="<table><tr>"+rows[0].map(x=>"<th>"+esc(x)+"</th>").join("")+"</tr>"+rows.slice(1).map(r=>"<tr>"+r.map(x=>"<td>"+esc(x)+"</td>").join("")+"</tr>").join("")+"</table>";let blob=new Blob(["<html><head><meta charset='utf-8'></head><body>"+table+"</body></html>"],{type:"application/vnd.ms-excel"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="MN_Foods_Report.xls";a.click();URL.revokeObjectURL(a.href);toast("Excel report exported")}
 function downloadICS(){let start=new Date();start.setHours(8,0,0,0);let dt=start.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z/,"Z");let ics=`BEGIN:VCALENDAR\\nVERSION:2.0\\nPRODID:-//M&N Foods LLC//Dashboard//EN\\nBEGIN:VEVENT\\nUID:${Date.now()}@mnfoods\\nDTSTAMP:${dt}\\nDTSTART:${dt}\\nDURATION:PT15M\\nRRULE:FREQ=DAILY\\nSUMMARY:M&N Foods Daily CEO Reminder\\nDESCRIPTION:Review today's M&N Foods checklist, priority items, payments, purchasing and maintenance.\\nEND:VEVENT\\nEND:VCALENDAR`;let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([ics],{type:"text/calendar"}));a.download="MN-Foods-Daily-Reminder.ics";a.click()}
 render();
 </script>
+<script src="https://accounts.google.com/gsi/client"></script>
 </body>
 </html>
