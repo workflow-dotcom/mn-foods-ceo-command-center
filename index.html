@@ -32,6 +32,101 @@ body{
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 
+.login-screen{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:linear-gradient(135deg,#f5f7fa,#eef8f1)
+}
+
+.login-box{
+  width:min(430px,100%);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 20px 60px rgba(20,32,55,.12)
+}
+
+.login-brand{
+  text-align:center;
+  margin-bottom:24px
+}
+
+.login-icon{
+  width:64px;
+  height:64px;
+  border:2px solid #22a559;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 10px;
+  font-size:30px
+}
+
+.login-brand h1{
+  margin:0;
+  font-size:23px
+}
+
+.login-brand p{
+  margin:4px 0 0;
+  color:var(--muted)
+}
+
+.login-field{
+  margin-bottom:14px
+}
+
+.login-field label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:5px
+}
+
+.login-field input{
+  width:100%;
+  border:1px solid #d9dee8;
+  border-radius:10px;
+  padding:11px 12px;
+  background:#fff
+}
+
+.login-button{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:12px;
+  background:var(--blue);
+  color:#fff;
+  font-weight:750;
+  margin-top:5px
+}
+
+.login-error{
+  display:none;
+  background:#fff0f0;
+  color:#b42318;
+  border-radius:9px;
+  padding:9px 11px;
+  font-size:12px;
+  margin-bottom:12px
+}
+
+.login-error.show{display:block}
+
+.login-note{
+  margin-top:16px;
+  padding:10px;
+  background:#f4f8ff;
+  border-radius:9px;
+  color:#475467;
+  font-size:11px;
+  text-align:center
+}
+
 .app{
   display:flex;
   min-height:100vh
@@ -149,6 +244,12 @@ button{cursor:pointer}
   font-size:13px
 }
 
+.btn.danger{
+  background:#fff0f0;
+  border-color:#ffd0d0;
+  color:#b42318
+}
+
 .content{
   padding:16px 24px 30px;
   max-width:1600px;
@@ -246,9 +347,7 @@ button{cursor:pointer}
   padding:4px
 }
 
-.metric:last-child{
-  border:0
-}
+.metric:last-child{border:0}
 
 .metric b{
   display:block;
@@ -315,9 +414,7 @@ button{cursor:pointer}
   border-bottom:1px solid #eef1f5
 }
 
-.task:last-child{
-  border-bottom:0
-}
+.task:last-child{border-bottom:0}
 
 .task input{
   width:17px;
@@ -340,11 +437,6 @@ button{cursor:pointer}
   background:#f3f5f8;
   color:#475467;
   white-space:nowrap
-}
-
-.calendar-tag{
-  background:#fff1f0;
-  color:#c43225
 }
 
 .priority-row{
@@ -494,7 +586,7 @@ button{cursor:pointer}
   border-radius:10px;
   padding:10px;
   margin-top:7px;
-  gap:10px
+  gap:8px
 }
 
 .status{
@@ -508,17 +600,11 @@ button{cursor:pointer}
   justify-content:space-between;
   color:var(--muted);
   font-size:11px;
-  padding-top:12px;
-  gap:10px
+  padding-top:12px
 }
 
-.page{
-  display:none
-}
-
-.page.active{
-  display:block
-}
+.page{display:none}
+.page.active{display:block}
 
 .table{
   width:100%;
@@ -575,18 +661,16 @@ button{cursor:pointer}
   padding:20px
 }
 
-.modal.show{
-  display:grid
-}
+.modal.show{display:grid}
 
 .modal-box{
   background:#fff;
   border-radius:15px;
   width:min(620px,100%);
-  max-height:90vh;
-  overflow:auto;
   padding:18px;
-  box-shadow:0 20px 50px rgba(0,0,0,.18)
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+  max-height:90vh;
+  overflow:auto
 }
 
 .modal-head{
@@ -613,14 +697,9 @@ button{cursor:pointer}
   margin-bottom:10px
 }
 
-.notice.success{
-  background:#edf9f0;
-  color:#18783c
-}
-
 .notice.warning{
-  background:#fff4e8;
-  color:#b54708
+  background:#fff7ed;
+  color:#9a3412
 }
 
 .toast{
@@ -635,66 +714,84 @@ button{cursor:pointer}
   z-index:50
 }
 
-.toast.show{
-  display:block
-}
+.toast.show{display:block}
 
-.calendar-event{
-  border:1px solid #e4e8ef;
-  border-radius:10px;
-  padding:10px;
-  margin-top:7px;
-  background:#fff
-}
-
-.calendar-event-title{
+.user-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:#edf9f0;
+  color:#18783c;
+  border-radius:99px;
+  padding:4px 8px;
+  font-size:11px;
   font-weight:700
 }
 
-.calendar-event-meta{
-  color:var(--muted);
-  font-size:11px;
-  margin-top:3px
+.email-test{
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px;
+  margin-top:12px
 }
 
-.sync-box{
-  border:1px solid #d8e7ff;
-  background:#f7faff;
-  border-radius:12px;
-  padding:13px;
-  margin-bottom:12px
+.email-test h3{
+  margin:0 0 5px;
+  font-size:14px
 }
 
-.sync-status{
+.nudge-card{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:11px;
+  margin-top:8px
+}
+
+.nudge-card.unread{
+  border-color:#9ed8b0;
+  background:#f7fcf8
+}
+
+.nudge-top{
   display:flex;
-  align-items:center;
   justify-content:space-between;
   gap:10px;
-  flex-wrap:wrap
+  align-items:flex-start
 }
 
-.source-icon{
-  font-size:14px;
-  margin-right:3px
+.nudge-message{
+  margin-top:7px;
+  font-size:13px
+}
+
+.nudge-actions{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:9px
+}
+
+.login-user-list{
+  margin-top:18px;
+  display:grid;
+  gap:6px
+}
+
+.login-user-list div{
+  display:flex;
+  justify-content:space-between;
+  padding:7px 9px;
+  background:#f8fafc;
+  border-radius:8px;
+  font-size:11px
 }
 
 @media(max-width:1100px){
-  .grid,
-  .bottom{
-    grid-template-columns:1fr 1fr
-  }
-
-  .grid .section:first-child{
-    grid-column:1/-1
-  }
-
-  .locations{
-    grid-template-columns:1fr
-  }
-
-  .quick{
-    grid-template-columns:repeat(3,1fr)
-  }
+  .grid,.bottom{grid-template-columns:1fr 1fr}
+  .grid .section:first-child{grid-column:1/-1}
+  .locations{grid-template-columns:1fr}
+  .quick{grid-template-columns:repeat(3,1fr)}
 }
 
 @media(max-width:720px){
@@ -723,8 +820,7 @@ button{cursor:pointer}
     font-size:19px
   }
 
-  .grid,
-  .bottom{
+  .grid,.bottom{
     grid-template-columns:1fr
   }
 
@@ -750,10 +846,7 @@ button{cursor:pointer}
   }
 
   .table{
-    min-width:700px
-  }
-
-  .section{
+    display:block;
     overflow-x:auto
   }
 }
@@ -762,81 +855,125 @@ button{cursor:pointer}
 
 <body>
 
-<div class="app">
+<!-- LOGIN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
 
-<aside class="side">
+    <div class="login-brand">
+      <div class="login-icon">🍴</div>
+      <h1>M&N Foods LLC</h1>
+      <p>Team Dashboard</p>
+    </div>
 
-  <div class="brand">
-    <div class="brand-icon">🍴</div>
-    M&N FOODS<br>
-    <span style="font-weight:500">LLC</span>
+    <div class="login-error" id="loginError">
+      Incorrect username or password.
+    </div>
+
+    <div class="login-field">
+      <label>Username</label>
+      <input id="loginUsername" autocomplete="username" placeholder="Enter username">
+    </div>
+
+    <div class="login-field">
+      <label>Password</label>
+      <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter password"
+             onkeydown="if(event.key==='Enter')login()">
+    </div>
+
+    <button class="login-button" onclick="login()">Log In</button>
+
+    <div class="login-user-list">
+      <div><span>Dianne</span><span>Admin</span></div>
+      <div><span>Naveen</span><span>CEO</span></div>
+      <div><span>Dinos</span><span>Staff</span></div>
+      <div><span>Albert</span><span>Staff</span></div>
+    </div>
+
+    <div class="login-note">
+      Prototype login. Production authentication should be moved to a secure backend.
+    </div>
+
   </div>
+</div>
 
-  <nav class="nav" id="nav"></nav>
+<!-- APP -->
+<div class="app" id="app" style="display:none">
 
-</aside>
+  <aside class="side">
 
-<main class="main">
+    <div class="brand">
+      <div class="brand-icon">🍴</div>
+      M&N FOODS<br>
+      <span style="font-weight:500">LLC</span>
+    </div>
 
-<header class="top">
+    <nav class="nav" id="nav"></nav>
 
-  <div class="greet">
-    <h1 id="greeting">Good morning! 👋</h1>
-    <p id="dateLine"></p>
-  </div>
+  </aside>
 
-  <div class="top-actions">
+  <main class="main">
 
-    <button class="btn" onclick="openNudge()">
-      🔔 <span id="nudgeBadge">0</span>
-    </button>
+    <header class="top">
 
-    <button class="btn" onclick="switchUser()">
-      👤 <span id="userName">Dianne</span> ▾
-    </button>
+      <div class="greet">
+        <h1 id="greeting">Good morning! 👋</h1>
+        <p id="dateLine"></p>
+      </div>
 
-  </div>
+      <div class="top-actions">
 
-</header>
+        <button class="btn" onclick="openNudge()">
+          🔔 <span id="nudgeBadge">0</span>
+        </button>
 
-<div class="content">
+        <button class="btn" onclick="switchUser()">
+          👤 <span id="userName">Dianne</span> ▾
+        </button>
 
-<section id="home" class="page active"></section>
+        <button class="btn danger" onclick="logout()">
+          Log Out
+        </button>
 
-<section id="tasks" class="page"></section>
+      </div>
 
-<section id="payments" class="page"></section>
+    </header>
 
-<section id="purchasing" class="page"></section>
+    <div class="content">
 
-<section id="projects" class="page"></section>
+      <section id="home" class="page active"></section>
 
-<section id="reports" class="page"></section>
+      <section id="tasks" class="page"></section>
 
-<section id="reminders" class="page"></section>
+      <section id="payments" class="page"></section>
 
-<section id="nudges" class="page"></section>
+      <section id="purchasing" class="page"></section>
 
-<section id="activity" class="page"></section>
+      <section id="projects" class="page"></section>
 
-<section id="settings" class="page"></section>
+      <section id="reports" class="page"></section>
+
+      <section id="reminders" class="page"></section>
+
+      <section id="nudges" class="page"></section>
+
+      <section id="activity" class="page"></section>
+
+      <section id="settings" class="page"></section>
+
+    </div>
+
+  </main>
 
 </div>
 
-</main>
-
-</div>
-
+<!-- MODAL -->
 <div class="modal" id="modal">
 
   <div class="modal-box">
 
     <div class="modal-head">
-
       <h2 id="modalTitle" style="margin:0"></h2>
-
       <button class="close" onclick="closeModal()">×</button>
-
     </div>
 
     <div id="modalBody"></div>
@@ -847,18 +984,41 @@ button{cursor:pointer}
 
 <div class="toast" id="toast"></div>
 
-
 <script>
 
 /* ============================================================
-   USERS / LOCATIONS / DEPARTMENTS
+   USERS
 ============================================================ */
 
 const USERS = [
-  {name:"Dianne",role:"Admin"},
-  {name:"Naveen",role:"CEO"},
-  {name:"Dinos",role:"Staff"},
-  {name:"Albert",role:"Staff"}
+  {
+    name:"Dianne",
+    username:"Dianne",
+    role:"Admin",
+    email:"workflow@ariahgroup.com",
+    passwordHash:null
+  },
+  {
+    name:"Naveen",
+    username:"Naveen",
+    role:"CEO",
+    email:"naveenm@ariahgroup.com",
+    passwordHash:null
+  },
+  {
+    name:"Dinos",
+    username:"Dinos00",
+    role:"Staff",
+    email:"dinos@ariahgroup.com",
+    passwordHash:"7426b915b762112d10cc38d1a3928bb4e980ea796bbe04875c984bd526791f39"
+  },
+  {
+    name:"Albert",
+    username:"Albert00",
+    role:"Staff",
+    email:"albert@ariahgroup.com",
+    passwordHash:"f137febd193de169e9d796f07c9492957f5ccff5f210a39779828376b244ef4e"
+  }
 ];
 
 const LOCS = [
@@ -876,26 +1036,12 @@ const DEPTS = [
 
 
 /* ============================================================
-   GOOGLE CALENDAR CONFIGURATION
+   STATE
 ============================================================ */
 
-const GOOGLE_CLIENT_ID =
-"800135193925-jes7bcbtlhf9s023k6lifj1f9asmd98m.apps.googleusercontent.com";
-
-const CALENDAR_SCOPE =
-"https://www.googleapis.com/auth/calendar";
-
-const CALENDAR_ID = "primary";
-
-let calendarTokenClient = null;
-let calendarAccessToken = null;
-
-
-/* ============================================================
-   APPLICATION STATE
-============================================================ */
-
-const DEFAULT_STATE = {
+let state = JSON.parse(
+  localStorage.getItem("mnfoods_v2") || "null"
+) || {
 
   user:"Dianne",
 
@@ -904,7 +1050,6 @@ const DEFAULT_STATE = {
   loc:"All",
 
   tasks:[
-
     {
       id:1,
       title:"Approve vendor payment",
@@ -915,10 +1060,8 @@ const DEFAULT_STATE = {
       time:"10:00 AM",
       priority:"High",
       done:false,
-      assignee:"Naveen",
-      source:"Dashboard"
+      assignee:"Naveen"
     },
-
     {
       id:2,
       title:"Follow up on freezer repair",
@@ -929,10 +1072,8 @@ const DEFAULT_STATE = {
       time:"Today",
       priority:"Medium",
       done:false,
-      assignee:"Dinos",
-      source:"Dashboard"
+      assignee:"Dinos"
     },
-
     {
       id:3,
       title:"Submit payroll documents",
@@ -943,10 +1084,8 @@ const DEFAULT_STATE = {
       time:"Today",
       priority:"High",
       done:false,
-      assignee:"Dianne",
-      source:"Dashboard"
+      assignee:"Dianne"
     },
-
     {
       id:4,
       title:"Order replacement part",
@@ -957,10 +1096,8 @@ const DEFAULT_STATE = {
       time:"2:00 PM",
       priority:"Medium",
       done:false,
-      assignee:"Albert",
-      source:"Dashboard"
+      assignee:"Albert"
     },
-
     {
       id:5,
       title:"Daily sales summary",
@@ -971,10 +1108,8 @@ const DEFAULT_STATE = {
       time:"Completed",
       priority:"Low",
       done:true,
-      assignee:"Dianne",
-      source:"Dashboard"
+      assignee:"Dianne"
     },
-
     {
       id:6,
       title:"Review vendor quote",
@@ -985,10 +1120,8 @@ const DEFAULT_STATE = {
       time:"Tomorrow",
       priority:"Medium",
       done:false,
-      assignee:"Naveen",
-      source:"Dashboard"
+      assignee:"Naveen"
     }
-
   ],
 
   payments:[
@@ -1034,52 +1167,387 @@ const DEFAULT_STATE = {
   connections:{
     email:false,
     calendar:false
-  },
-
-  calendarSync:{
-    lastSync:null,
-    importedCount:0,
-    connectedEmail:"",
-    calendarName:"Primary Calendar"
   }
 
 };
 
+let page = "home";
 
-let state =
-  JSON.parse(localStorage.getItem("mnfoods_v2") || "null")
-  || DEFAULT_STATE;
+let calendarTokenClient = null;
+
+let calendarAccessToken = null;
 
 
 /* ============================================================
-   SAFETY FOR OLD DATA
+   LOGIN
 ============================================================ */
 
-if(!state.calendarSync){
+async function sha256(text){
 
-  state.calendarSync = {
-    lastSync:null,
-    importedCount:0,
-    connectedEmail:"",
-    calendarName:"Primary Calendar"
-  };
+  const data = new TextEncoder().encode(text);
+
+  const hashBuffer = await crypto.subtle.digest(
+    "SHA-256",
+    data
+  );
+
+  return Array.from(
+    new Uint8Array(hashBuffer)
+  )
+  .map(b => b.toString(16).padStart(2,"0"))
+  .join("");
 
 }
 
-if(!Array.isArray(state.tasks)) state.tasks=[];
-if(!Array.isArray(state.payments)) state.payments=[];
-if(!Array.isArray(state.purchases)) state.purchases=[];
-if(!Array.isArray(state.projects)) state.projects=[];
-if(!Array.isArray(state.nudges)) state.nudges=[];
-if(!Array.isArray(state.activity)) state.activity=[];
+
+async function login(){
+
+  const username =
+    document.getElementById("loginUsername").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+  const error =
+    document.getElementById("loginError");
+
+  /*
+    Dianne and Naveen are currently admin/CEO prototype
+    accounts. They can be connected to proper backend
+    authentication later.
+  */
+
+  let user = USERS.find(
+    u => u.username.toLowerCase() === username.toLowerCase()
+  );
+
+  if(!user){
+
+    error.classList.add("show");
+    return;
+
+  }
+
+  if(user.passwordHash){
+
+    const enteredHash = await sha256(password);
+
+    if(enteredHash !== user.passwordHash){
+
+      error.classList.add("show");
+      return;
+
+    }
+
+  }else{
+
+    /*
+      Prototype-only fallback for Dianne/Naveen.
+      Replace with backend authentication before production.
+    */
+
+    if(password !== "admin"){
+
+      error.classList.add("show");
+      return;
+
+    }
+
+  }
+
+  error.classList.remove("show");
+
+  state.user = user.name;
+
+  state.loggedIn = true;
+
+  save();
+
+  showApp();
+
+  toast("Welcome, " + user.name + "!");
+
+}
+
+
+function showApp(){
+
+  document.getElementById("loginScreen").style.display="none";
+
+  document.getElementById("app").style.display="flex";
+
+  render();
+
+}
+
+
+function logout(){
+
+  state.loggedIn = false;
+
+  save();
+
+  document.getElementById("app").style.display="none";
+
+  document.getElementById("loginScreen").style.display="grid";
+
+  document.getElementById("loginUsername").value="";
+
+  document.getElementById("loginPassword").value="";
+
+}
 
 
 /* ============================================================
-   BASIC HELPERS
+   USER HELPERS
 ============================================================ */
 
-let page = "home";
+function currentUser(){
 
+  return USERS.find(
+    u => u.name === state.user
+  ) || USERS[0];
+
+}
+
+
+function userByName(name){
+
+  return USERS.find(
+    u => u.name === name
+  );
+
+}
+
+
+/* ============================================================
+   GOOGLE CALENDAR
+============================================================ */
+
+const GOOGLE_CLIENT_ID =
+"800135193925-jes7bcbtlhf9s023k6lifj1f9asmd98m.apps.googleusercontent.com";
+
+const CALENDAR_SCOPE =
+"https://www.googleapis.com/auth/calendar";
+
+
+function initializeGoogleCalendar(){
+
+  if(
+    !window.google ||
+    !google.accounts ||
+    !google.accounts.oauth2
+  ){
+
+    toast(
+      "Google Calendar is still loading. Please try again."
+    );
+
+    return false;
+
+  }
+
+  if(!calendarTokenClient){
+
+    calendarTokenClient =
+      google.accounts.oauth2.initTokenClient({
+
+        client_id:GOOGLE_CLIENT_ID,
+
+        scope:CALENDAR_SCOPE,
+
+        callback:""
+
+      });
+
+  }
+
+  return true;
+
+}
+
+
+function connectCalendar(){
+
+  if(!initializeGoogleCalendar()) return;
+
+  calendarTokenClient.callback =
+    async response => {
+
+      if(response.error){
+
+        console.error(
+          "Google authorization error:",
+          response
+        );
+
+        toast(
+          "Google Calendar authorization was cancelled."
+        );
+
+        return;
+
+      }
+
+      calendarAccessToken =
+        response.access_token;
+
+      try{
+
+        await importGoogleCalendarEvents();
+
+        state.connections.calendar=true;
+
+        state.activity.unshift(
+          `${state.user} connected Google Calendar`
+        );
+
+        save();
+
+        toast(
+          "Google Calendar connected and synced!"
+        );
+
+        render();
+
+      }catch(error){
+
+        console.error(error);
+
+        toast(
+          "Google Calendar sync failed."
+        );
+
+      }
+
+    };
+
+  calendarTokenClient.requestAccessToken({
+    prompt:calendarAccessToken ? "" : "consent"
+  });
+
+}
+
+
+async function importGoogleCalendarEvents(){
+
+  if(!calendarAccessToken){
+
+    throw new Error(
+      "No Google Calendar access token."
+    );
+
+  }
+
+  const timeMin =
+    new Date().toISOString();
+
+  const url =
+    "https://www.googleapis.com/calendar/v3/calendars/primary/events"
+    + "?singleEvents=true"
+    + "&orderBy=startTime"
+    + "&timeMin="
+    + encodeURIComponent(timeMin);
+
+  const response =
+    await fetch(url,{
+      headers:{
+        Authorization:
+          "Bearer " + calendarAccessToken
+      }
+    });
+
+  if(!response.ok){
+
+    throw new Error(
+      "Calendar request failed."
+    );
+
+  }
+
+  const data =
+    await response.json();
+
+  const existingGoogleIds =
+    state.tasks
+      .filter(t => t.googleEventId)
+      .map(t => t.googleEventId);
+
+  let added = 0;
+
+  for(const event of (data.items || [])){
+
+    if(!event.id) continue;
+
+    if(existingGoogleIds.includes(event.id))
+      continue;
+
+    const start =
+      event.start?.dateTime ||
+      event.start?.date;
+
+    if(!start) continue;
+
+    const date =
+      new Date(start)
+        .toISOString()
+        .slice(0,10);
+
+    state.tasks.push({
+
+      id:Date.now()+Math.random(),
+
+      title:event.summary || "Google Calendar Event",
+
+      detail:
+        event.description ||
+        "Imported from Google Calendar",
+
+      loc:"All Locations",
+
+      dept:"General",
+
+      due:date,
+
+      time:event.start?.dateTime
+        ? new Date(event.start.dateTime)
+            .toLocaleTimeString(
+              "en-US",
+              {
+                hour:"numeric",
+                minute:"2-digit"
+              }
+            )
+        : "All day",
+
+      priority:"Medium",
+
+      done:false,
+
+      assignee:state.user,
+
+      googleEventId:event.id,
+
+      source:"Google Calendar"
+
+    });
+
+    added++;
+
+  }
+
+  state.activity.unshift(
+    `${state.user} synced ${added} Google Calendar event${added===1?"":"s"}`
+  );
+
+  save();
+
+}
+
+
+/* ============================================================
+   STORAGE
+============================================================ */
 
 function save(){
 
@@ -1094,22 +1562,25 @@ function save(){
 function esc(s){
 
   return String(s ?? "")
-    .replace(/[&<>"']/g,m=>({
-
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-
-    }[m]));
+    .replace(
+      /[&<>"']/g,
+      m => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[m])
+    );
 
 }
 
 
 function today(){
 
-  return new Date().toISOString().slice(0,10);
+  return new Date()
+    .toISOString()
+    .slice(0,10);
 
 }
 
@@ -1128,128 +1599,16 @@ function fmtMoney(n){
 }
 
 
-function formatDate(dateString){
-
-  if(!dateString) return "";
-
-  const d = new Date(dateString + "T00:00:00");
-
-  return d.toLocaleDateString(
-    "en-US",
-    {
-      month:"short",
-      day:"numeric",
-      year:"numeric"
-    }
-  );
-
-}
-
-
-function formatCalendarDateTime(event){
-
-  if(event.start?.date){
-
-    return formatDate(event.start.date) + " • All day";
-
-  }
-
-  if(event.start?.dateTime){
-
-    const d = new Date(event.start.dateTime);
-
-    return d.toLocaleString(
-      "en-US",
-      {
-        month:"short",
-        day:"numeric",
-        year:"numeric",
-        hour:"numeric",
-        minute:"2-digit"
-      }
-    );
-
-  }
-
-  return "";
-
-}
-
-
-function formatCalendarTaskDate(event){
-
-  if(event.start?.date){
-
-    return event.start.date;
-
-  }
-
-  if(event.start?.dateTime){
-
-    return new Date(event.start.dateTime)
-      .toISOString()
-      .slice(0,10);
-
-  }
-
-  return today();
-
-}
-
-
-function formatCalendarTaskTime(event){
-
-  if(event.start?.date){
-
-    return "All day";
-
-  }
-
-  if(event.start?.dateTime){
-
-    return new Date(event.start.dateTime)
-      .toLocaleTimeString(
-        "en-US",
-        {
-          hour:"numeric",
-          minute:"2-digit"
-        }
-      );
-
-  }
-
-  return "";
-
-}
-
-
-function toast(message){
-
-  const t = document.getElementById("toast");
-
-  t.textContent = message;
-
-  t.classList.add("show");
-
-  setTimeout(
-    ()=>t.classList.remove("show"),
-    2500
-  );
-
-}
-
-
-/* ============================================================
-   FILTERS
-============================================================ */
-
 function filteredTasks(){
 
   return state.tasks.filter(
     t =>
-      (state.dept==="All" || t.dept===state.dept)
-      &&
-      (state.loc==="All" || t.loc===state.loc)
+      (state.dept==="All" || t.dept===state.dept) &&
+      (
+        state.loc==="All" ||
+        t.loc===state.loc ||
+        t.loc==="All Locations"
+      )
   );
 
 }
@@ -1258,7 +1617,93 @@ function filteredTasks(){
 function openTasks(){
 
   return filteredTasks()
-    .filter(t=>!t.done);
+    .filter(t => !t.done);
+
+}
+
+
+function toast(x){
+
+  const t =
+    document.getElementById("toast");
+
+  t.textContent=x;
+
+  t.classList.add("show");
+
+  setTimeout(
+    () => t.classList.remove("show"),
+    2500
+  );
+
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+function nav(){
+
+  const items = [
+
+    ["home","⌂","Home"],
+
+    ["tasks","☑","Tasks"],
+
+    ["payments","$","Payments"],
+
+    ["purchasing","🛒","Purchasing"],
+
+    ["projects","▣","Projects"],
+
+    ["reports","▥","Reports"],
+
+    ["reminders","♧","Reminders"],
+
+    ["nudges","📣","Nudge Center"],
+
+    ["activity","◷","Activity"],
+
+    ["settings","⚙","Settings"]
+
+  ];
+
+  document.getElementById("nav").innerHTML =
+    items.map(
+      x => `
+        <button
+          class="${page===x[0]?"active":""}"
+          onclick="go('${x[0]}')"
+        >
+          <span class="ico">${x[1]}</span>
+          ${x[2]}
+        </button>
+      `
+    ).join("");
+
+}
+
+
+function go(p){
+
+  page=p;
+
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      x => x.classList.remove("active")
+    );
+
+  document
+    .getElementById(p)
+    .classList.add("active");
+
+  render();
+
+  nav();
+
+  window.scrollTo(0,0);
 
 }
 
@@ -1285,123 +1730,54 @@ function setLoc(l){
 }
 
 
-function filters(){
-
-  return `
-
-    <div class="filters">
-
-      <strong>DEPARTMENT:</strong>
-
-      ${["All",...DEPTS].map(d=>`
-
-        <button
-          class="filter ${state.dept===d?"active":""}"
-          onclick="setDept('${esc(d)}')"
-        >
-          ${esc(d)}
-        </button>
-
-      `).join("")}
-
-    </div>
-
-  `;
-
-}
-
-
 /* ============================================================
-   NAVIGATION
-============================================================ */
-
-function nav(){
-
-  const items = [
-
-    ["home","⌂","Home"],
-    ["tasks","☑","Tasks"],
-    ["payments","$","Payments"],
-    ["purchasing","🛒","Purchasing"],
-    ["projects","▣","Projects"],
-    ["reports","▥","Reports"],
-    ["reminders","♧","Reminders"],
-    ["nudges","📣","Nudge Center"],
-    ["activity","◷","Activity"],
-    ["settings","⚙","Settings"]
-
-  ];
-
-  document.getElementById("nav").innerHTML =
-
-    items.map(x=>`
-
-      <button
-        class="${page===x[0]?"active":""}"
-        onclick="go('${x[0]}')"
-      >
-
-        <span class="ico">${x[1]}</span>
-
-        ${x[2]}
-
-      </button>
-
-    `).join("");
-
-}
-
-
-function go(p){
-
-  page=p;
-
-  document
-    .querySelectorAll(".page")
-    .forEach(x=>x.classList.remove("active"));
-
-  document
-    .getElementById(p)
-    .classList.add("active");
-
-  render();
-
-  nav();
-
-  window.scrollTo(0,0);
-
-}
-
-
-/* ============================================================
-   MAIN RENDER
+   RENDER
 ============================================================ */
 
 function render(){
 
-  document.getElementById("userName").textContent =
-    state.user;
+  if(!state.loggedIn){
 
-  document.getElementById("nudgeBadge").textContent =
-    state.nudges.filter(n=>!n.read).length;
+    document.getElementById("app").style.display="none";
 
-  const d = new Date();
+    return;
 
-  document.getElementById("greeting").textContent =
-    `Good morning, ${state.user}! 👋`;
+  }
 
-  document.getElementById("dateLine").textContent =
+  const user =
+    currentUser();
 
-    d.toLocaleDateString(
-      "en-US",
-      {
-        weekday:"long",
-        month:"long",
-        day:"numeric",
-        year:"numeric"
-      }
-    )
-    + " • Eastern Time";
+  document.getElementById("userName")
+    .textContent =
+      user.name;
+
+  document.getElementById("nudgeBadge")
+    .textContent =
+      state.nudges.filter(
+        n =>
+          n.to===state.user &&
+          !n.read
+      ).length;
+
+  const d =
+    new Date();
+
+  document.getElementById("greeting")
+    .textContent =
+      `Good morning, ${state.user}! 👋`;
+
+  document.getElementById("dateLine")
+    .textContent =
+      d.toLocaleDateString(
+        "en-US",
+        {
+          weekday:"long",
+          month:"long",
+          day:"numeric",
+          year:"numeric"
+        }
+      )
+      + " • Eastern Time";
 
   nav();
 
@@ -1429,38 +1805,80 @@ function render(){
 
 
 /* ============================================================
-   LOCATION CARD
+   FILTERS
+============================================================ */
+
+function filters(){
+
+  return `
+    <div class="filters">
+      <strong>DEPARTMENT:</strong>
+
+      ${
+        ["All",...DEPTS]
+        .map(
+          d => `
+            <button
+              class="filter ${
+                state.dept===d ? "active" : ""
+              }"
+              onclick="setDept('${esc(d)}')"
+            >
+              ${esc(d)}
+            </button>
+          `
+        )
+        .join("")
+      }
+
+    </div>
+  `;
+
+}
+
+
+/* ============================================================
+   LOCATION CARDS
 ============================================================ */
 
 function locationCard(loc){
 
   const a =
     state.tasks.filter(
-      t=>!t.done && t.loc===loc
+      t =>
+        !t.done &&
+        (
+          t.loc===loc ||
+          t.loc==="All Locations"
+        )
     );
 
   const pay =
     state.payments.filter(
-      x=>x.loc===loc && x.status!=="Paid"
+      x =>
+        x.loc===loc &&
+        x.status!=="Paid"
     ).length;
 
   const maint =
     a.filter(
-      x=>x.dept==="Maintenance & Repair"
+      x =>
+        x.dept==="Maintenance & Repair"
     ).length;
 
   const pur =
     a.filter(
-      x=>x.dept==="Purchasing"
+      x =>
+        x.dept==="Purchasing"
     ).length;
 
   const high =
     a.filter(
-      x=>x.priority==="High"
+      x =>
+        x.priority==="High"
     ).length;
 
   return `
-
     <div
       class="card location"
       onclick="setLoc('${esc(loc)}')"
@@ -1472,10 +1890,14 @@ function locationCard(loc){
           📍 ${esc(loc)}
         </span>
 
-        <span
-          class="pill ${high?'red':'green'}"
-        >
-          ${high ? high+" Urgent" : "On track"}
+        <span class="pill ${
+          high ? "red" : "green"
+        }">
+          ${
+            high
+            ? high+" Urgent"
+            : "On track"
+          }
         </span>
 
       </div>
@@ -1505,13 +1927,15 @@ function locationCard(loc){
       </div>
 
       <a
-        onclick="event.stopPropagation();setLoc('${esc(loc)}')"
+        onclick="
+          event.stopPropagation();
+          setLoc('${esc(loc)}')
+        "
       >
         View all items →
       </a>
 
     </div>
-
   `;
 
 }
@@ -1523,11 +1947,7 @@ function locationCard(loc){
 
 function taskRow(t){
 
-  const calendar =
-    t.source==="Google Calendar";
-
   return `
-
     <div class="task">
 
       <input
@@ -1539,43 +1959,29 @@ function taskRow(t){
       <div>
 
         <div class="task-title">
-
-          ${calendar
-            ? '<span class="source-icon">📅</span>'
-            : ''
-          }
-
           ${esc(t.title)}
-
         </div>
 
         <div class="task-meta">
-
-          ${esc(t.detail || "")}
-
-          • ${esc(t.assignee || "Unassigned")}
-
-          ${calendar
-            ? " • Imported from Google Calendar"
+          ${esc(t.detail)}
+          •
+          ${esc(t.assignee || "Unassigned")}
+          ${
+            t.source==="Google Calendar"
+            ? " • 📅 Google Calendar"
             : ""
           }
-
         </div>
 
       </div>
 
-      <span
-        class="tag ${calendar?'calendar-tag':''}"
-      >
-
-        ${esc(t.loc || "All Locations")}
+      <span class="tag">
+        ${esc(t.loc)}
         ·
-        ${esc(t.time || "")}
-
+        ${esc(t.time)}
       </span>
 
     </div>
-
   `;
 
 }
@@ -1587,77 +1993,75 @@ function taskRow(t){
 
 function home(){
 
-  const ft = filteredTasks();
+  const ft =
+    filteredTasks();
 
   const open =
-    ft.filter(t=>!t.done);
+    ft.filter(t => !t.done);
 
   const td =
-    open.filter(t=>t.due===today());
+    open.filter(
+      t => t.due===today()
+    );
 
   const high =
-    open.filter(t=>t.priority==="High");
+    open.filter(
+      t => t.priority==="High"
+    );
 
   const overdue =
-    open.filter(t=>t.due<today());
+    open.filter(
+      t => t.due<today()
+    );
 
   const done =
-    ft.filter(t=>t.done).length;
+    ft.filter(t => t.done).length;
 
-  const pct =
-    ft.length
-      ? Math.round(done/ft.length*100)
-      : 0;
+  const week = [
+    0,1,2,3,4,5,6
+  ]
+  .map(i => {
 
+    const d =
+      new Date();
 
-  const week =
-    [0,1,2,3,4,5,6]
-    .map(i=>{
+    d.setDate(
+      d.getDate()+i
+    );
 
-      const d = new Date();
+    const ds =
+      d.toISOString()
+       .slice(0,10);
 
-      d.setDate(d.getDate()+i);
+    const n =
+      open.filter(
+        t => t.due===ds
+      ).length;
 
-      const ds =
-        d.toISOString().slice(0,10);
+    return `
+      <div class="day ${
+        i===0 ? "today" : ""
+      }">
 
-      const n =
-        open.filter(t=>t.due===ds).length;
-
-      const cal =
-        open.filter(
-          t=>
-            t.due===ds &&
-            t.source==="Google Calendar"
-        ).length;
-
-      return `
-
-        <div
-          class="day ${i===0?"today":""}"
-        >
-
-          <div class="dow">
-            ${d.toLocaleDateString(
-              "en-US",
-              {weekday:"short"}
-            ).toUpperCase()}
-          </div>
-
-          <b>${d.getDate()}</b>
-
-          <span>
-            ${n} item${n===1?"":"s"}
-            ${cal ? " • 📅 "+cal : ""}
-          </span>
-
+        <div class="dow">
+          ${d.toLocaleDateString(
+            "en-US",
+            {weekday:"short"}
+          ).toUpperCase()}
         </div>
 
-      `;
+        <b>${d.getDate()}</b>
 
-    })
-    .join("");
+        <span>
+          ${n}
+          item${n===1?"":"s"}
+        </span>
 
+      </div>
+    `;
+
+  })
+  .join("");
 
   document.getElementById("home").innerHTML = `
 
@@ -1667,25 +2071,21 @@ function home(){
       ${LOCS.map(locationCard).join("")}
     </div>
 
-
     <div class="grid">
-
 
       <div class="card section">
 
         <div class="section-head">
 
           <div>
-
             <h2>
               ☑️ Today's Checklist
               <span class="count">${td.length}</span>
             </h2>
 
             <div class="sub">
-              Dashboard tasks AND Google Calendar events.
+              The few things that need attention today.
             </div>
-
           </div>
 
           <button
@@ -1697,13 +2097,16 @@ function home(){
 
         </div>
 
-
         ${
           td.length
-            ? td.map(taskRow).join("")
-            : '<div class="sub">Nothing due today. You’re all caught up. 🎉</div>'
+          ? td.map(taskRow).join("")
+          : `
+            <div class="sub">
+              Nothing due today.
+              You’re all caught up. 🎉
+            </div>
+          `
         }
-
 
         <div style="margin-top:8px">
 
@@ -1724,71 +2127,46 @@ function home(){
         <div class="section-head">
 
           <div>
-
             <h2>Priority</h2>
-
             <div class="sub">
               Only the items that need attention.
             </div>
-
           </div>
 
         </div>
 
-
         <div class="priority-row">
-
           <span class="priority-icon redbg">!</span>
-
           <b>${overdue.length}</b>
-
           <span>Overdue</span>
-
           <span>›</span>
-
         </div>
 
-
         <div class="priority-row">
-
           <span class="priority-icon orangebg">!</span>
-
           <b>${high.length}</b>
-
           <span>High Priority</span>
-
           <span>›</span>
-
         </div>
 
-
         <div class="priority-row">
-
           <span class="priority-icon bluebg">✓</span>
-
           <b>${td.length}</b>
-
           <span>Due Today</span>
-
           <span>›</span>
-
         </div>
 
-
         <div class="priority-row">
-
           <span class="priority-icon bluebg">7</span>
-
           <b>
-            ${open.filter(
-              t=>t.due>=today()
-            ).length}
+            ${
+              open.filter(
+                t => t.due>=today()
+              ).length
+            }
           </b>
-
           <span>Open This Week</span>
-
           <span>›</span>
-
         </div>
 
       </div>
@@ -1799,25 +2177,26 @@ function home(){
         <div class="section-head">
 
           <div>
-
             <h2>Reports</h2>
 
             <div class="sub">
               Simple overview.
             </div>
-
           </div>
 
           <select
             class="filter"
-            onchange="toast('Report range: '+this.value)"
+            onchange="
+              toast(
+                'Report range: '+this.value
+              )
+            "
           >
             <option>This Week</option>
             <option>This Month</option>
           </select>
 
         </div>
-
 
         <div class="reports">
 
@@ -1830,7 +2209,8 @@ function home(){
             <b>
               ${fmtMoney(
                 state.payments.reduce(
-                  (s,x)=>s+Number(x.amount||0),
+                  (s,x) =>
+                    s+Number(x.amount||0),
                   0
                 )
               )}
@@ -1849,7 +2229,6 @@ function home(){
           </div>
 
         </div>
-
 
         <div class="report-actions">
 
@@ -1883,19 +2262,16 @@ function home(){
 
     <div class="grid">
 
-
       <div class="card section">
 
         <div class="section-head">
 
           <div>
-
             <h2>This Week</h2>
 
             <div class="sub">
               Upcoming workload at a glance.
             </div>
-
           </div>
 
         </div>
@@ -1914,7 +2290,6 @@ function home(){
         <div class="sub">
           Big, simple buttons for common actions.
         </div>
-
 
         <div
           class="quick"
@@ -1963,7 +2338,13 @@ function home(){
           <h2>
             Nudge Center
             <span class="count">
-              ${state.nudges.filter(n=>!n.read).length}
+              ${
+                state.nudges.filter(
+                  n =>
+                    n.to===state.user &&
+                    !n.read
+                ).length
+              }
             </span>
           </h2>
 
@@ -1976,104 +2357,35 @@ function home(){
 
         </div>
 
-
         <div class="nudge">
 
           ${
             state.nudges
-              .filter(n=>!n.read)
+              .filter(
+                n =>
+                  n.to===state.user &&
+                  !n.read
+              )
               .slice(0,3)
-              .map(n=>`
-
-                <div>
-
-                  🔔 ${esc(n.text)}
-
-                  <span style="float:right">
-                    ${esc(n.to)}
-                  </span>
-
-                </div>
-
-              `)
+              .map(
+                n => `
+                  <div>
+                    🔔
+                    ${esc(n.text)}
+                    <span style="float:right">
+                      ${esc(n.from)}
+                    </span>
+                  </div>
+                `
+              )
               .join("")
             ||
-            '<div class="sub">No new nudges.</div>'
+            `
+              <div class="sub">
+                No new nudges.
+              </div>
+            `
           }
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="card section">
-
-      <h2>📅 Google Calendar Sync</h2>
-
-      <div class="sub">
-        Google Calendar events are imported into this dashboard as tasks.
-      </div>
-
-
-      <div class="sync-box" style="margin-top:10px">
-
-        <div class="sync-status">
-
-          <div>
-
-            <b>
-              ${
-                state.connections.calendar
-                  ? "● Google Calendar Connected"
-                  : "○ Google Calendar Not Connected"
-              }
-            </b>
-
-            <div class="sub">
-
-              ${
-                state.calendarSync.lastSync
-                  ? "Last synced: " +
-                    new Date(
-                      state.calendarSync.lastSync
-                    ).toLocaleString()
-                  : "No calendar sync yet."
-              }
-
-            </div>
-
-          </div>
-
-
-          <div style="display:flex;gap:7px;flex-wrap:wrap">
-
-            <button
-              class="btn small green"
-              onclick="connectCalendar()"
-            >
-              ${
-                state.connections.calendar
-                  ? "Reconnect Google Calendar"
-                  : "Connect Google Calendar"
-              }
-            </button>
-
-            ${
-              state.connections.calendar
-                ? `
-                  <button
-                    class="btn small primary"
-                    onclick="syncGoogleCalendar()"
-                  >
-                    🔄 Sync Calendar Now
-                  </button>
-                `
-                : ""
-            }
-
-          </div>
 
         </div>
 
@@ -2098,8 +2410,8 @@ function home(){
         <span class="status">
           ${
             state.connections.email
-              ? "● Connected"
-              : "○ Not connected"
+            ? "● Connected"
+            : "○ Test mode"
           }
         </span>
 
@@ -2107,11 +2419,7 @@ function home(){
           class="btn small"
           onclick="go('settings')"
         >
-          ${
-            state.connections.email
-              ? "Manage"
-              : "Connect"
-          }
+          Manage
         </button>
 
       </div>
@@ -2124,8 +2432,8 @@ function home(){
         <span class="status">
           ${
             state.connections.calendar
-              ? "● Connected"
-              : "○ Not connected"
+            ? "● Connected"
+            : "○ Not connected"
           }
         </span>
 
@@ -2133,11 +2441,7 @@ function home(){
           class="btn small"
           onclick="go('settings')"
         >
-          ${
-            state.connections.calendar
-              ? "Manage"
-              : "Connect"
-          }
+          Manage
         </button>
 
       </div>
@@ -2156,7 +2460,7 @@ function home(){
       </span>
 
       <span>
-        Google Calendar sync enabled
+        Local prototype
       </span>
 
     </div>
@@ -2167,24 +2471,26 @@ function home(){
 
 
 /* ============================================================
-   TASK TOGGLE
+   TASKS
 ============================================================ */
 
 function toggleTask(id){
 
   const t =
-    state.tasks.find(x=>x.id===id);
+    state.tasks.find(
+      x => x.id===id
+    );
 
   if(!t) return;
 
-  t.done = !t.done;
+  t.done=!t.done;
 
   state.activity.unshift(
-
     `${state.user} ${
-      t.done ? "completed" : "reopened"
+      t.done
+      ? "completed"
+      : "reopened"
     } task “${t.title}”`
-
   );
 
   save();
@@ -2194,8 +2500,127 @@ function toggleTask(id){
 }
 
 
+function listPage(kind){
+
+  const rows =
+    filteredTasks();
+
+  document.getElementById(kind).innerHTML = `
+
+    <div class="card section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2>Tasks</h2>
+
+          <div class="sub">
+            Dashboard tasks and imported Google Calendar events.
+          </div>
+
+        </div>
+
+        <button
+          class="btn primary"
+          onclick="openForm('task')"
+        >
+          ＋ Add Task
+        </button>
+
+      </div>
+
+      ${filters()}
+
+      <table class="table">
+
+        <thead>
+
+          <tr>
+            <th></th>
+            <th>Task</th>
+            <th>Location</th>
+            <th>Department</th>
+            <th>Due</th>
+            <th>Assigned</th>
+            <th>Source</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${
+            rows.map(
+              t => `
+                <tr>
+
+                  <td>
+                    <input
+                      type="checkbox"
+                      ${t.done?"checked":""}
+                      onchange="
+                        toggleTask(${t.id})
+                      "
+                    >
+                  </td>
+
+                  <td>
+
+                    <b>
+                      ${esc(t.title)}
+                    </b>
+
+                    <br>
+
+                    <span class="sub">
+                      ${esc(t.detail)}
+                    </span>
+
+                  </td>
+
+                  <td>
+                    ${esc(t.loc)}
+                  </td>
+
+                  <td>
+                    ${esc(t.dept)}
+                  </td>
+
+                  <td>
+                    ${esc(t.due)}
+                  </td>
+
+                  <td>
+                    ${esc(t.assignee)}
+                  </td>
+
+                  <td>
+                    ${
+                      t.source==="Google Calendar"
+                      ? "📅 Google Calendar"
+                      : "Dashboard"
+                    }
+                  </td>
+
+                </tr>
+              `
+            ).join("")
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+}
+
+
 /* ============================================================
-   ADD FORMS
+   FORMS
 ============================================================ */
 
 function openForm(type){
@@ -2214,62 +2639,57 @@ function openForm(type){
 
   };
 
+  let body="";
 
-  let body = "";
 
-
-  if(type==="task" || type==="maintenance"){
+  if(
+    type==="task" ||
+    type==="maintenance"
+  ){
 
     body = `
 
       <div class="formgrid">
 
         <div class="field">
-
           <label>Task</label>
-
           <input
             id="f_title"
             placeholder="What needs to be done?"
           >
-
         </div>
 
-
         <div class="field">
-
           <label>Location</label>
 
           <select id="f_loc">
 
             ${LOCS.map(
-              x=>`<option>${esc(x)}</option>`
+              x => `<option>${x}</option>`
             ).join("")}
 
-            <option>All Locations</option>
+            <option>
+              All Locations
+            </option>
 
           </select>
 
         </div>
 
-
         <div class="field">
-
           <label>Department</label>
 
           <select id="f_dept">
 
             ${DEPTS.map(
-              x=>`<option>${esc(x)}</option>`
+              x => `<option>${x}</option>`
             ).join("")}
 
           </select>
 
         </div>
 
-
         <div class="field">
-
           <label>Due Date</label>
 
           <input
@@ -2280,30 +2700,28 @@ function openForm(type){
 
         </div>
 
-
         <div class="field">
-
           <label>Priority</label>
 
           <select id="f_priority">
-
             <option>Medium</option>
             <option>High</option>
             <option>Low</option>
-
           </select>
 
         </div>
 
-
         <div class="field">
-
           <label>Assigned To</label>
 
           <select id="f_assignee">
 
             ${USERS.map(
-              x=>`<option>${esc(x.name)}</option>`
+              x => `
+                <option>
+                  ${x.name}
+                </option>
+              `
             ).join("")}
 
           </select>
@@ -2311,7 +2729,6 @@ function openForm(type){
         </div>
 
       </div>
-
 
       <div
         class="field"
@@ -2327,24 +2744,6 @@ function openForm(type){
 
       </div>
 
-      <div
-        class="notice"
-        style="margin-top:10px"
-      >
-        You can optionally add this task directly to Google Calendar after saving.
-      </div>
-
-      <label>
-
-        <input
-          type="checkbox"
-          id="f_calendar"
-        >
-
-        Add this task to Google Calendar
-
-      </label>
-
     `;
 
   }
@@ -2357,7 +2756,6 @@ function openForm(type){
       <div class="formgrid">
 
         <div class="field">
-
           <label>Payment / Vendor</label>
 
           <input
@@ -2367,9 +2765,7 @@ function openForm(type){
 
         </div>
 
-
         <div class="field">
-
           <label>Amount (USD)</label>
 
           <input
@@ -2380,24 +2776,20 @@ function openForm(type){
 
         </div>
 
-
         <div class="field">
-
           <label>Location</label>
 
           <select id="f_loc">
 
             ${LOCS.map(
-              x=>`<option>${esc(x)}</option>`
+              x => `<option>${x}</option>`
             ).join("")}
 
           </select>
 
         </div>
 
-
         <div class="field">
-
           <label>Due Date</label>
 
           <input
@@ -2422,7 +2814,6 @@ function openForm(type){
       <div class="formgrid">
 
         <div class="field">
-
           <label>Request</label>
 
           <input
@@ -2432,9 +2823,7 @@ function openForm(type){
 
         </div>
 
-
         <div class="field">
-
           <label>Amount (USD)</label>
 
           <input
@@ -2445,30 +2834,30 @@ function openForm(type){
 
         </div>
 
-
         <div class="field">
-
           <label>Location</label>
 
           <select id="f_loc">
 
             ${LOCS.map(
-              x=>`<option>${esc(x)}</option>`
+              x => `<option>${x}</option>`
             ).join("")}
 
           </select>
 
         </div>
 
-
         <div class="field">
-
           <label>Requester</label>
 
           <select id="f_assignee">
 
             ${USERS.map(
-              x=>`<option>${esc(x.name)}</option>`
+              x => `
+                <option>
+                  ${x.name}
+                </option>
+              `
             ).join("")}
 
           </select>
@@ -2489,7 +2878,6 @@ function openForm(type){
       <div class="formgrid">
 
         <div class="field">
-
           <label>Project</label>
 
           <input
@@ -2499,15 +2887,13 @@ function openForm(type){
 
         </div>
 
-
         <div class="field">
-
           <label>Location</label>
 
           <select id="f_loc">
 
             ${LOCS.map(
-              x=>`<option>${esc(x)}</option>`
+              x => `<option>${x}</option>`
             ).join("")}
 
           </select>
@@ -2521,43 +2907,41 @@ function openForm(type){
   }
 
 
-  document.getElementById("modalTitle").textContent =
-    titles[type];
+  document.getElementById("modalTitle")
+    .textContent=titles[type];
 
+  document.getElementById("modalBody")
+    .innerHTML =
+      body +
 
-  document.getElementById("modalBody").innerHTML =
+      `
 
-    body +
-
-    `
-
-      <div
-        style="
-          display:flex;
-          justify-content:flex-end;
-          gap:8px;
-          margin-top:14px
-        "
-      >
-
-        <button
-          class="btn"
-          onclick="closeModal()"
+        <div
+          style="
+            display:flex;
+            justify-content:flex-end;
+            gap:8px;
+            margin-top:14px
+          "
         >
-          Cancel
-        </button>
 
-        <button
-          class="btn primary"
-          onclick="saveForm('${type}')"
-        >
-          Save
-        </button>
+          <button
+            class="btn"
+            onclick="closeModal()"
+          >
+            Cancel
+          </button>
 
-      </div>
+          <button
+            class="btn primary"
+            onclick="saveForm('${type}')"
+          >
+            Save
+          </button>
 
-    `;
+        </div>
 
+      `;
 
   document
     .getElementById("modal")
@@ -2575,11 +2959,7 @@ function closeModal(){
 }
 
 
-/* ============================================================
-   SAVE FORM
-============================================================ */
-
-async function saveForm(type){
+function saveForm(type){
 
   const title =
     document
@@ -2587,10 +2967,11 @@ async function saveForm(type){
       ?.value
       .trim();
 
-
   if(!title){
 
-    toast("Please enter a name.");
+    toast(
+      "Please enter a name."
+    );
 
     return;
 
@@ -2606,21 +2987,26 @@ async function saveForm(type){
       title,
 
       amount:Number(
-        document.getElementById("f_amount").value || 0
+        document
+          .getElementById("f_amount")
+          .value || 0
       ),
 
       loc:
-        document.getElementById("f_loc").value,
+        document
+          .getElementById("f_loc")
+          .value,
 
       status:"Pending",
 
       due:
-        document.getElementById("f_due").value
+        document
+          .getElementById("f_due")
+          .value
 
     });
 
   }
-
 
   else if(type==="purchase"){
 
@@ -2631,21 +3017,26 @@ async function saveForm(type){
       title,
 
       amount:Number(
-        document.getElementById("f_amount").value || 0
+        document
+          .getElementById("f_amount")
+          .value || 0
       ),
 
       loc:
-        document.getElementById("f_loc").value,
+        document
+          .getElementById("f_loc")
+          .value,
 
       status:"Pending",
 
       requester:
-        document.getElementById("f_assignee").value
+        document
+          .getElementById("f_assignee")
+          .value
 
     });
 
   }
-
 
   else if(type==="project"){
 
@@ -2656,7 +3047,9 @@ async function saveForm(type){
       title,
 
       loc:
-        document.getElementById("f_loc").value,
+        document
+          .getElementById("f_loc")
+          .value,
 
       status:"Open"
 
@@ -2664,306 +3057,66 @@ async function saveForm(type){
 
   }
 
-
   else{
 
-    const task = {
+    state.tasks.push({
 
       id:Date.now(),
 
       title,
 
       detail:
-        document.getElementById("f_detail")?.value || "",
+        document
+          .getElementById("f_detail")
+          ?.value || "",
 
       loc:
-        document.getElementById("f_loc").value,
+        document
+          .getElementById("f_loc")
+          .value,
 
       dept:
-        document.getElementById("f_dept").value,
+        document
+          .getElementById("f_dept")
+          .value,
 
       due:
-        document.getElementById("f_due").value,
+        document
+          .getElementById("f_due")
+          .value,
 
       time:"Today",
 
       priority:
-        document.getElementById("f_priority").value,
+        document
+          .getElementById("f_priority")
+          .value,
 
       done:false,
 
       assignee:
-        document.getElementById("f_assignee").value,
+        document
+          .getElementById("f_assignee")
+          .value
 
-      source:"Dashboard"
-
-    };
-
-
-    state.tasks.push(task);
-
-
-    const addToCalendar =
-      document.getElementById("f_calendar")?.checked;
-
-
-    if(
-      addToCalendar &&
-      state.connections.calendar &&
-      calendarAccessToken
-    ){
-
-      try{
-
-        const event =
-          await createGoogleCalendarEventFromTask(task);
-
-        task.googleEventId = event.id;
-
-        task.source = "Dashboard + Google Calendar";
-
-        state.activity.unshift(
-          `${state.user} added "${title}" to the dashboard and Google Calendar`
-        );
-
-      }
-
-      catch(error){
-
-        console.error(error);
-
-        state.activity.unshift(
-          `${state.user} added "${title}" to the dashboard; Google Calendar creation failed`
-        );
-
-        toast(
-          "Task saved, but Google Calendar creation failed."
-        );
-
-      }
-
-    }
+    });
 
   }
 
 
-  if(
-    !state.activity.some(
-      x=>x.includes(`added ${type}: ${title}`)
-    )
-  ){
-
-    state.activity.unshift(
-      `${state.user} added ${type}: ${title}`
-    );
-
-  }
-
+  state.activity.unshift(
+    `${state.user} added ${type}: ${title}`
+  );
 
   save();
 
   closeModal();
 
-  toast("Saved successfully");
+  toast(
+    "Saved successfully"
+  );
 
   render();
-
-}
-
-
-/* ============================================================
-   TASKS PAGE
-============================================================ */
-
-function listPage(kind){
-
-  const rows =
-    filteredTasks();
-
-
-  document.getElementById(kind).innerHTML = `
-
-    <div class="card section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2>Tasks</h2>
-
-          <div class="sub">
-            Dashboard tasks and Google Calendar events.
-          </div>
-
-        </div>
-
-
-        <div
-          style="
-            display:flex;
-            gap:7px;
-            flex-wrap:wrap
-          "
-        >
-
-          <button
-            class="btn"
-            onclick="syncGoogleCalendar()"
-          >
-            🔄 Sync Calendar
-          </button>
-
-          <button
-            class="btn primary"
-            onclick="openForm('task')"
-          >
-            ＋ Add Task
-          </button>
-
-        </div>
-
-      </div>
-
-
-      ${filters()}
-
-
-      <div
-        class="notice"
-        style="margin-bottom:10px"
-      >
-
-        📅 Google Calendar events are automatically converted into
-        dashboard tasks when you sync.
-
-      </div>
-
-
-      <table class="table">
-
-        <thead>
-
-          <tr>
-
-            <th></th>
-            <th>Task</th>
-            <th>Location</th>
-            <th>Department</th>
-            <th>Due</th>
-            <th>Assigned</th>
-            <th>Source</th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody>
-
-          ${
-            rows.map(t=>`
-
-              <tr>
-
-                <td>
-
-                  <input
-                    type="checkbox"
-                    ${t.done?"checked":""}
-                    onchange="toggleTask(${t.id})"
-                  >
-
-                </td>
-
-
-                <td>
-
-                  <b>
-
-                    ${
-                      t.source==="Google Calendar"
-                        ? "📅 "
-                        : ""
-                    }
-
-                    ${esc(t.title)}
-
-                  </b>
-
-                  <br>
-
-                  <span class="sub">
-                    ${esc(t.detail || "")}
-                  </span>
-
-                </td>
-
-
-                <td>
-                  ${esc(t.loc || "All Locations")}
-                </td>
-
-
-                <td>
-                  ${esc(t.dept || "General")}
-                </td>
-
-
-                <td>
-
-                  ${esc(formatDate(t.due))}
-
-                  <br>
-
-                  <span class="sub">
-                    ${esc(t.time || "")}
-                  </span>
-
-                </td>
-
-
-                <td>
-                  ${esc(t.assignee || "Unassigned")}
-                </td>
-
-
-                <td>
-
-                  ${
-                    t.source==="Google Calendar"
-                      ? '<span class="tag calendar-tag">📅 Google Calendar</span>'
-                      : '<span class="tag">Dashboard</span>'
-                  }
-
-                </td>
-
-              </tr>
-
-            `).join("")
-
-            ||
-
-            `
-
-              <tr>
-
-                <td colspan="7">
-                  No tasks found.
-                </td>
-
-              </tr>
-
-            `
-
-          }
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
 
 }
 
@@ -2974,77 +3127,87 @@ function listPage(kind){
 
 function paymentsPage(){
 
-  document.getElementById("payments").innerHTML = `
+  document.getElementById("payments")
+    .innerHTML = `
 
-    <div class="card section">
+      <div class="card section">
 
-      <div class="section-head">
+        <div class="section-head">
 
-        <div>
+          <div>
 
-          <h2>Payments</h2>
+            <h2>Payments</h2>
 
-          <div class="sub">
-            Pending payments in USD.
+            <div class="sub">
+              Pending payments in USD.
+            </div>
+
           </div>
+
+          <button
+            class="btn primary"
+            onclick="openForm('payment')"
+          >
+            ＋ Add Payment
+          </button>
 
         </div>
 
-        <button
-          class="btn primary"
-          onclick="openForm('payment')"
-        >
-          ＋ Add Payment
-        </button>
+        <table class="table">
+
+          <thead>
+
+            <tr>
+              <th>Payment</th>
+              <th>Location</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Due</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              state.payments.map(
+                p => `
+
+                  <tr>
+
+                    <td>
+                      ${esc(p.title)}
+                    </td>
+
+                    <td>
+                      ${esc(p.loc)}
+                    </td>
+
+                    <td>
+                      ${fmtMoney(p.amount)}
+                    </td>
+
+                    <td>
+                      ${esc(p.status)}
+                    </td>
+
+                    <td>
+                      ${esc(p.due)}
+                    </td>
+
+                  </tr>
+
+                `
+              ).join("")
+            }
+
+          </tbody>
+
+        </table>
 
       </div>
 
-
-      <table class="table">
-
-        <thead>
-
-          <tr>
-            <th>Payment</th>
-            <th>Location</th>
-            <th>Amount</th>
-            <th>Status</th>
-            <th>Due</th>
-          </tr>
-
-        </thead>
-
-
-        <tbody>
-
-          ${
-            state.payments.map(p=>`
-
-              <tr>
-
-                <td>${esc(p.title)}</td>
-
-                <td>${esc(p.loc)}</td>
-
-                <td>${fmtMoney(p.amount)}</td>
-
-                <td>${esc(p.status)}</td>
-
-                <td>${esc(p.due)}</td>
-
-              </tr>
-
-            `).join("")
-
-          }
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
+    `;
 
 }
 
@@ -3055,79 +3218,87 @@ function paymentsPage(){
 
 function purchasingPage(){
 
-  document.getElementById("purchasing").innerHTML = `
+  document.getElementById("purchasing")
+    .innerHTML = `
 
-    <div class="card section">
+      <div class="card section">
 
-      <div class="section-head">
+        <div class="section-head">
 
-        <div>
+          <div>
 
-          <h2>Purchasing</h2>
+            <h2>Purchasing</h2>
 
-          <div class="sub">
-            Requests waiting for action.
+            <div class="sub">
+              Requests waiting for action.
+            </div>
+
           </div>
+
+          <button
+            class="btn primary"
+            onclick="openForm('purchase')"
+          >
+            ＋ Add Purchase
+          </button>
 
         </div>
 
-        <button
-          class="btn primary"
-          onclick="openForm('purchase')"
-        >
-          ＋ Add Purchase
-        </button>
+        <table class="table">
+
+          <thead>
+
+            <tr>
+              <th>Request</th>
+              <th>Location</th>
+              <th>Amount</th>
+              <th>Requester</th>
+              <th>Status</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              state.purchases.map(
+                p => `
+
+                  <tr>
+
+                    <td>
+                      ${esc(p.title)}
+                    </td>
+
+                    <td>
+                      ${esc(p.loc)}
+                    </td>
+
+                    <td>
+                      ${fmtMoney(p.amount)}
+                    </td>
+
+                    <td>
+                      ${esc(p.requester)}
+                    </td>
+
+                    <td>
+                      ${esc(p.status)}
+                    </td>
+
+                  </tr>
+
+                `
+              ).join("")
+            }
+
+          </tbody>
+
+        </table>
 
       </div>
 
-
-      <table class="table">
-
-        <thead>
-
-          <tr>
-
-            <th>Request</th>
-            <th>Location</th>
-            <th>Amount</th>
-            <th>Requester</th>
-            <th>Status</th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody>
-
-          ${
-            state.purchases.map(p=>`
-
-              <tr>
-
-                <td>${esc(p.title)}</td>
-
-                <td>${esc(p.loc)}</td>
-
-                <td>${fmtMoney(p.amount)}</td>
-
-                <td>${esc(p.requester)}</td>
-
-                <td>${esc(p.status)}</td>
-
-              </tr>
-
-            `).join("")
-
-          }
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
+    `;
 
 }
 
@@ -3138,83 +3309,85 @@ function purchasingPage(){
 
 function projectsPage(){
 
-  document.getElementById("projects").innerHTML = `
+  document.getElementById("projects")
+    .innerHTML = `
 
-    <div class="card section">
+      <div class="card section">
 
-      <div class="section-head">
+        <div class="section-head">
 
-        <div>
+          <div>
 
-          <h2>Projects</h2>
+            <h2>Projects</h2>
 
-          <div class="sub">
-            Keep larger work visible without cluttering the home screen.
+            <div class="sub">
+              Keep larger work visible without cluttering the home screen.
+            </div>
+
           </div>
+
+          <button
+            class="btn primary"
+            onclick="openForm('project')"
+          >
+            ＋ Add Project
+          </button>
 
         </div>
 
-        <button
-          class="btn primary"
-          onclick="openForm('project')"
-        >
-          ＋ Add Project
-        </button>
+        <table class="table">
+
+          <thead>
+
+            <tr>
+              <th>Project</th>
+              <th>Location</th>
+              <th>Status</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              state.projects.map(
+                p => `
+
+                  <tr>
+
+                    <td>
+                      ${esc(p.title)}
+                    </td>
+
+                    <td>
+                      ${esc(p.loc)}
+                    </td>
+
+                    <td>
+                      ${esc(p.status)}
+                    </td>
+
+                  </tr>
+
+                `
+              ).join("")
+              ||
+              `
+                <tr>
+                  <td colspan="3">
+                    No projects yet.
+                  </td>
+                </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
 
       </div>
 
-
-      <table class="table">
-
-        <thead>
-
-          <tr>
-
-            <th>Project</th>
-            <th>Location</th>
-            <th>Status</th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody>
-
-          ${
-            state.projects.map(p=>`
-
-              <tr>
-
-                <td>${esc(p.title)}</td>
-
-                <td>${esc(p.loc)}</td>
-
-                <td>${esc(p.status)}</td>
-
-              </tr>
-
-            `).join("")
-
-            ||
-
-            `
-              <tr>
-                <td colspan="3">
-                  No projects yet.
-                </td>
-              </tr>
-            `
-
-          }
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
+    `;
 
 }
 
@@ -3225,137 +3398,78 @@ function projectsPage(){
 
 function reportsPage(){
 
-  document.getElementById("reports").innerHTML = `
+  document.getElementById("reports")
+    .innerHTML = `
 
-    <div class="card section">
+      <div class="card section">
 
-      <div class="section-head">
+        <div class="section-head">
 
-        <div>
+          <div>
 
-          <h2>Reports & Exports</h2>
+            <h2>Reports & Exports</h2>
 
-          <div class="sub">
-            Export the current M&N Foods data.
+            <div class="sub">
+              Export the current M&N Foods data.
+            </div>
+
+          </div>
+
+          <div>
+
+            <button
+              class="btn"
+              onclick="exportXLS()"
+            >
+              Export Excel
+            </button>
+
+            <button
+              class="btn"
+              onclick="window.print()"
+            >
+              Export PDF
+            </button>
+
           </div>
 
         </div>
 
-
-        <div>
-
-          <button
-            class="btn"
-            onclick="exportXLS()"
-          >
-            Export Excel
-          </button>
-
-          <button
-            class="btn"
-            onclick="window.print()"
-          >
-            Export PDF
-          </button>
-
-        </div>
-
       </div>
 
-    </div>
-
-
-    <div class="reports">
-
-      <div class="report">
-
-        <b>${state.tasks.length}</b>
-
-        <span>Total Tasks</span>
-
-      </div>
-
-
-      <div class="report">
-
-        <b>
-
-          ${fmtMoney(
-            state.payments.reduce(
-              (s,x)=>s+Number(x.amount||0),
-              0
-            )
-          )}
-
-        </b>
-
-        <span>Payment Value</span>
-
-      </div>
-
-
-      <div class="report">
-
-        <b>${state.purchases.length}</b>
-
-        <span>Purchase Requests</span>
-
-      </div>
-
-
-      <div class="report">
-
-        <b>${state.projects.length}</b>
-
-        <span>Projects</span>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="card section"
-      style="margin-top:10px"
-    >
-
-      <h2>📅 Calendar Sync Summary</h2>
-
-      <div
-        class="reports"
-        style="margin-top:10px"
-      >
+      <div class="reports">
 
         <div class="report">
-
-          <b>
-            ${
-              state.tasks.filter(
-                t=>t.source==="Google Calendar"
-              ).length
-            }
-          </b>
-
-          <span>Calendar Tasks</span>
-
+          <b>${state.tasks.length}</b>
+          <span>Total Tasks</span>
         </div>
 
+        <div class="report">
+          <b>
+            ${fmtMoney(
+              state.payments.reduce(
+                (s,x) =>
+                  s+Number(x.amount||0),
+                0
+              )
+            )}
+          </b>
+          <span>Payment Value</span>
+        </div>
 
         <div class="report">
+          <b>${state.purchases.length}</b>
+          <span>Purchase Requests</span>
+        </div>
 
-          <b>
-            ${state.calendarSync.importedCount || 0}
-          </b>
-
-          <span>Imported During Last Sync</span>
-
+        <div class="report">
+          <b>${state.projects.length}</b>
+          <span>Projects</span>
         </div>
 
       </div>
 
-    </div>
-
-  `;
+    `;
 
 }
 
@@ -3366,158 +3480,136 @@ function reportsPage(){
 
 function remindersPage(){
 
-  document.getElementById("reminders").innerHTML = `
+  document.getElementById("reminders")
+    .innerHTML = `
 
-    <div class="grid">
+      <div class="grid">
 
+        <div class="card section">
 
-      <div class="card section">
+          <h2>🔔 Daily Reminder</h2>
 
-        <h2>🔔 Daily Reminder</h2>
+          <div class="sub">
+            Configure the daily dashboard reminder.
+          </div>
 
-        <div class="sub">
-          Daily reminders can be managed through Calendar.
-        </div>
+          <div style="margin-top:12px">
 
+            <label>
 
-        <div style="margin-top:12px">
+              <input
+                type="checkbox"
+                id="r_enabled"
+                ${
+                  state.reminder.enabled
+                  ? "checked"
+                  : ""
+                }
+              >
 
-          <label>
+              Enable daily reminder
 
-            <input
-              type="checkbox"
-              id="r_enabled"
-              ${state.reminder.enabled?"checked":""}
-            >
-
-            Enable daily reminder
-
-          </label>
-
-        </div>
-
-
-        <div
-          class="formgrid"
-          style="margin-top:10px"
-        >
-
-          <div class="field">
-
-            <label>Time (ET)</label>
-
-            <input
-              id="r_time"
-              type="time"
-              value="${state.reminder.time}"
-            >
+            </label>
 
           </div>
 
-        </div>
+          <div
+            class="formgrid"
+            style="margin-top:10px"
+          >
 
+            <div class="field">
 
-        <div style="margin-top:10px">
+              <label>
+                Time (ET)
+              </label>
 
-          <label>
-
-            <input
-              type="checkbox"
-              id="r_email"
-              ${state.reminder.email?"checked":""}
-            >
-
-            Email
-
-          </label>
-
-          &nbsp;
-
-          <label>
-
-            <input
-              type="checkbox"
-              id="r_cal"
-              ${state.reminder.calendar?"checked":""}
-            >
-
-            Calendar
-
-          </label>
-
-        </div>
-
-
-        <button
-          class="btn primary"
-          style="margin-top:12px"
-          onclick="saveReminder()"
-        >
-          Save Reminder
-        </button>
-
-      </div>
-
-
-      <div class="card section">
-
-        <h2>📅 Google Calendar</h2>
-
-        <div class="notice">
-
-          Your Google Calendar can be used as a source of dashboard tasks.
-
-          When you create a calendar event, use
-          <b>Sync Calendar Now</b>
-          to bring it into this dashboard.
-
-        </div>
-
-
-        <button
-          class="btn green"
-          onclick="connectCalendar()"
-        >
-          ${
-            state.connections.calendar
-              ? "Reconnect Google Calendar"
-              : "Connect Google Calendar"
-          }
-        </button>
-
-
-        ${
-          state.connections.calendar
-            ? `
-
-              <button
-                class="btn primary"
-                onclick="syncGoogleCalendar()"
+              <input
+                id="r_time"
+                type="time"
+                value="${state.reminder.time}"
               >
-                🔄 Sync Calendar Now
-              </button>
 
-            `
-            : ""
-        }
+            </div>
+
+          </div>
+
+          <div style="margin-top:10px">
+
+            <label>
+
+              <input
+                type="checkbox"
+                id="r_email"
+                ${
+                  state.reminder.email
+                  ? "checked"
+                  : ""
+                }
+              >
+
+              Email
+
+            </label>
+
+            &nbsp;
+
+            <label>
+
+              <input
+                type="checkbox"
+                id="r_cal"
+                ${
+                  state.reminder.calendar
+                  ? "checked"
+                  : ""
+                }
+              >
+
+              Calendar
+
+            </label>
+
+          </div>
+
+          <button
+            class="btn primary"
+            style="margin-top:12px"
+            onclick="saveReminder()"
+          >
+            Save Reminder
+          </button>
+
+        </div>
 
 
-        <div style="margin-top:12px">
+        <div class="card section">
+
+          <h2>📅 Google Calendar</h2>
+
+          <div class="notice">
+
+            Connect Google Calendar to import upcoming calendar events
+            into the Tasks dashboard.
+
+          </div>
 
           <button
             class="btn"
-            onclick="downloadICS()"
+            onclick="connectCalendar()"
           >
-            Download Daily Reminder .ics
+            ${
+              state.connections.calendar
+              ? "Sync Google Calendar"
+              : "Connect Google Calendar"
+            }
           </button>
 
         </div>
 
       </div>
 
-    </div>
-
-  `;
+    `;
 
 }
 
@@ -3527,168 +3619,321 @@ function saveReminder(){
   state.reminder = {
 
     enabled:
-      document.getElementById("r_enabled").checked,
+      document
+        .getElementById("r_enabled")
+        .checked,
 
     time:
-      document.getElementById("r_time").value,
+      document
+        .getElementById("r_time")
+        .value,
 
     email:
-      document.getElementById("r_email").checked,
+      document
+        .getElementById("r_email")
+        .checked,
 
     calendar:
-      document.getElementById("r_cal").checked
+      document
+        .getElementById("r_cal")
+        .checked
 
   };
 
   save();
 
-  toast("Reminder settings saved");
+  toast(
+    "Reminder settings saved"
+  );
 
 }
 
 
 /* ============================================================
-   NUDGES
+   NUDGE CENTER
 ============================================================ */
 
 function nudgesPage(){
 
-  document.getElementById("nudges").innerHTML = `
+  const received =
+    state.nudges
+      .filter(
+        n => n.to===state.user
+      );
 
-    <div class="card section">
+  const sent =
+    state.nudges
+      .filter(
+        n => n.from===state.user
+      );
 
-      <div class="section-head">
+  document.getElementById("nudges")
+    .innerHTML = `
+
+      <div class="card section">
+
+        <div class="section-head">
+
+          <div>
+
+            <h2>
+              📣 Nudge Center
+            </h2>
+
+            <div class="sub">
+              Send a quick reminder to another team member.
+            </div>
+
+          </div>
+
+          <button
+            class="btn primary"
+            onclick="openNudge()"
+          >
+            Send Nudge
+          </button>
+
+        </div>
+
+
+        <h3 style="font-size:14px">
+          Received
+        </h3>
+
+        ${
+          received.length
+          ? received.map(
+              n => nudgeCard(n)
+            ).join("")
+          : `
+            <div class="sub">
+              No nudges received.
+            </div>
+          `
+        }
+
+
+        <h3
+          style="
+            font-size:14px;
+            margin-top:20px
+          "
+        >
+          Sent
+        </h3>
+
+        ${
+          sent.length
+          ? sent.map(
+              n => nudgeCard(n)
+            ).join("")
+          : `
+            <div class="sub">
+              No nudges sent.
+            </div>
+          `
+        }
+
+      </div>
+
+    `;
+
+}
+
+
+function nudgeCard(n){
+
+  const recipient =
+    userByName(n.to);
+
+  return `
+
+    <div class="nudge-card ${
+      !n.read && n.to===state.user
+      ? "unread"
+      : ""
+    }">
+
+      <div class="nudge-top">
 
         <div>
 
-          <h2>📣 Nudge Center</h2>
+          <b>
+            ${
+              n.to===state.user
+              ? "From "+esc(n.from)
+              : "To "+esc(n.to)
+            }
+          </b>
 
-          <div class="sub">
-            Any team member can nudge another person.
+          <div class="task-meta">
+
+            ${
+              recipient
+              ? esc(recipient.email)
+              : ""
+            }
+
+            •
+            ${esc(n.date || "")}
+
           </div>
 
         </div>
 
+        <span class="tag">
+          ${
+            n.read
+            ? "Read"
+            : "Unread"
+          }
+        </span>
+
+      </div>
+
+      <div class="nudge-message">
+        ${esc(n.text)}
+      </div>
+
+      <div class="nudge-actions">
+
+        ${
+          n.to===state.user && !n.read
+          ? `
+            <button
+              class="btn small green"
+              onclick="readNudge(${n.id})"
+            >
+              ✓ Mark Read
+            </button>
+          `
+          : ""
+        }
+
+        ${
+          n.to!==state.user
+          ? `
+            <button
+              class="btn small"
+              onclick="testNudgeEmail(${n.id})"
+            >
+              ✉️ Test Email
+            </button>
+          `
+          : ""
+        }
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* ============================================================
+   SEND NUDGE
+============================================================ */
+
+function openNudge(){
+
+  const recipients =
+    USERS.filter(
+      x => x.name!==state.user
+    );
+
+  document.getElementById("modalTitle")
+    .textContent =
+      "Send a Nudge";
+
+  document.getElementById("modalBody")
+    .innerHTML = `
+
+      <div class="field">
+
+        <label>
+          Send to
+        </label>
+
+        <select id="n_to">
+
+          ${
+            recipients.map(
+              x => `
+                <option value="${esc(x.name)}">
+                  ${esc(x.name)}
+                  — ${esc(x.email)}
+                </option>
+              `
+            ).join("")
+          }
+
+        </select>
+
+      </div>
+
+
+      <div
+        class="field"
+        style="margin-top:10px"
+      >
+
+        <label>
+          Message
+        </label>
+
+        <textarea
+          id="n_text"
+          placeholder="Example: Please review the pending vendor payment."
+        ></textarea>
+
+      </div>
+
+
+      <div class="email-test">
+
+        <h3>
+          ✉️ Email Test
+        </h3>
+
+        <div class="sub">
+
+          The nudge will be saved to the dashboard.
+          The test button opens the recipient's email client
+          with the email already prepared.
+
+        </div>
+
+      </div>
+
+
+      <div
+        style="
+          display:flex;
+          justify-content:flex-end;
+          gap:8px;
+          margin-top:12px
+        "
+      >
+
+        <button
+          class="btn"
+          onclick="closeModal()"
+        >
+          Cancel
+        </button>
+
         <button
           class="btn primary"
-          onclick="openNudge()"
+          onclick="sendNudge()"
         >
           Send Nudge
         </button>
 
       </div>
 
-
-      ${
-        state.nudges.map(n=>`
-
-          <div class="task">
-
-            <div>🔔</div>
-
-            <div>
-
-              <div class="task-title">
-                ${esc(n.text)}
-              </div>
-
-              <div class="task-meta">
-                From ${esc(n.from)}
-                →
-                ${esc(n.to)}
-              </div>
-
-            </div>
-
-
-            <button
-              class="btn small"
-              onclick="readNudge(${n.id})"
-            >
-
-              ${n.read ? "Read" : "Mark read"}
-
-            </button>
-
-          </div>
-
-        `).join("")
-
-        ||
-
-        '<div class="sub">No nudges yet.</div>'
-
-      }
-
-    </div>
-
-  `;
-
-}
-
-
-function openNudge(){
-
-  document.getElementById("modalTitle").textContent =
-    "Send a Nudge";
-
-
-  document.getElementById("modalBody").innerHTML = `
-
-    <div class="field">
-
-      <label>Send to</label>
-
-      <select id="n_to">
-
-        ${
-          USERS
-            .filter(x=>x.name!==state.user)
-            .map(
-              x=>`<option>${esc(x.name)}</option>`
-            )
-            .join("")
-        }
-
-      </select>
-
-    </div>
-
-
-    <div
-      class="field"
-      style="margin-top:10px"
-    >
-
-      <label>Message</label>
-
-      <textarea
-        id="n_text"
-        placeholder="Example: Please review the pending vendor payment."
-      ></textarea>
-
-    </div>
-
-
-    <div
-      style="
-        display:flex;
-        justify-content:flex-end;
-        margin-top:12px
-      "
-    >
-
-      <button
-        class="btn primary"
-        onclick="sendNudge()"
-      >
-        Send Nudge
-      </button>
-
-    </div>
-
-  `;
-
+    `;
 
   document
     .getElementById("modal")
@@ -3705,54 +3950,201 @@ function sendNudge(){
       .value
       .trim();
 
-
   if(!text){
 
-    toast("Write a short message first.");
+    toast(
+      "Write a short message first."
+    );
 
     return;
 
   }
 
+  const to =
+    document
+      .getElementById("n_to")
+      .value;
 
-  state.nudges.unshift({
+  const recipient =
+    userByName(to);
+
+  const nudge = {
 
     id:Date.now(),
 
     from:state.user,
 
-    to:
-      document.getElementById("n_to").value,
+    to,
 
     text,
 
-    read:false
+    read:false,
 
-  });
+    date:
+      new Date()
+        .toLocaleString()
 
+  };
 
-  state.activity.unshift(
-    `${state.user} sent a nudge`
+  state.nudges.unshift(
+    nudge
   );
 
+  state.activity.unshift(
+    `${state.user} sent a nudge to ${to}`
+  );
 
   save();
 
   closeModal();
 
-  toast("Nudge saved");
+  toast(
+    `Nudge saved for ${to}`
+  );
 
   render();
+
+
+  /*
+    Automatically prepare the email test after
+    the nudge has been saved.
+  */
+
+  setTimeout(
+    () => {
+
+      if(recipient){
+
+        const subject =
+          `M&N Foods Nudge from ${state.user}`;
+
+        const body =
+          `Hello ${recipient.name},
+
+${text}
+
+This nudge was sent from the M&N Foods Dashboard.
+
+— ${state.user}
+M&N Foods LLC`;
+
+        const mailto =
+          "mailto:" +
+          encodeURIComponent(
+            recipient.email
+          ) +
+          "?subject=" +
+          encodeURIComponent(subject) +
+          "&body=" +
+          encodeURIComponent(body);
+
+        /*
+          This opens the user's email client.
+          Actual automatic sending will require
+          a secure email backend/API.
+        */
+
+        window.location.href =
+          mailto;
+
+      }
+
+    },
+    300
+  );
 
 }
 
 
+/* ============================================================
+   TEST EMAIL
+============================================================ */
+
+function testNudgeEmail(id){
+
+  const nudge =
+    state.nudges.find(
+      n => n.id===id
+    );
+
+  if(!nudge){
+
+    toast(
+      "Nudge not found."
+    );
+
+    return;
+
+  }
+
+  const recipient =
+    userByName(nudge.to);
+
+  if(!recipient){
+
+    toast(
+      "Recipient email not found."
+    );
+
+    return;
+
+  }
+
+  const subject =
+    `M&N Foods Nudge from ${nudge.from}`;
+
+  const body =
+    `Hello ${recipient.name},
+
+${nudge.text}
+
+This is a test email generated from the M&N Foods Dashboard.
+
+— ${nudge.from}
+M&N Foods LLC`;
+
+  const mailto =
+    "mailto:" +
+    encodeURIComponent(
+      recipient.email
+    ) +
+    "?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" +
+    encodeURIComponent(body);
+
+  state.activity.unshift(
+    `${state.user} prepared a test email for ${recipient.email}`
+  );
+
+  save();
+
+  window.location.href =
+    mailto;
+
+}
+
+
+/* ============================================================
+   READ NUDGE
+============================================================ */
+
 function readNudge(id){
 
   const n =
-    state.nudges.find(x=>x.id===id);
+    state.nudges.find(
+      x => x.id===id
+    );
 
-  if(n) n.read=true;
+  if(n){
+
+    n.read=true;
+
+    state.activity.unshift(
+      `${state.user} marked a nudge from ${n.from} as read`
+    );
+
+  }
 
   save();
 
@@ -3767,30 +4159,35 @@ function readNudge(id){
 
 function activityPage(){
 
-  document.getElementById("activity").innerHTML = `
+  document.getElementById("activity")
+    .innerHTML = `
 
-    <div class="card section">
+      <div class="card section">
 
-      <h2>Recent Activity</h2>
+        <h2>
+          Recent Activity
+        </h2>
 
-      <div
-        class="activity"
-        style="margin-top:8px"
-      >
+        <div
+          class="activity"
+          style="margin-top:8px"
+        >
 
-        ${
-          state.activity
-            .map(
-              x=>`<div>• ${esc(x)}</div>`
-            )
-            .join("")
-        }
+          ${
+            state.activity.map(
+              x => `
+                <div>
+                  • ${esc(x)}
+                </div>
+              `
+            ).join("")
+          }
+
+        </div>
 
       </div>
 
-    </div>
-
-  `;
+    `;
 
 }
 
@@ -3801,994 +4198,170 @@ function activityPage(){
 
 function settingsPage(){
 
-  document.getElementById("settings").innerHTML = `
+  const user =
+    currentUser();
 
-    <div class="grid">
+  document.getElementById("settings")
+    .innerHTML = `
+
+      <div class="grid">
+
+        <div class="card section">
+
+          <h2>👤 Users</h2>
+
+          <div class="sub">
+            Team access and email routing.
+          </div>
 
 
-      <div class="card section">
+          <div
+            style="margin-top:10px"
+          >
 
-        <h2>👤 Users</h2>
+            ${
+              USERS.map(
+                u => `
 
-        <div class="sub">
-          Four-person access model.
-        </div>
+                  <div class="task">
 
+                    <div>
+                      👤
+                    </div>
 
-        <div style="margin-top:10px">
+                    <div>
 
-          ${
-            USERS.map(u=>`
+                      <b>
+                        ${esc(u.name)}
+                      </b>
 
-              <div class="task">
+                      <div class="task-meta">
 
-                <div>👤</div>
+                        ${esc(u.role)}
 
-                <div>
+                        •
 
-                  <b>${esc(u.name)}</b>
+                        ${esc(u.username)}
 
-                  <div class="task-meta">
+                        •
 
-                    ${esc(u.role)}
+                        ${esc(u.email)}
 
-                    ${
-                      u.name==="Dianne" ||
-                      u.name==="Naveen"
-                        ? " • Priority access"
-                        : " • Add / modify"
-                    }
+                      </div>
+
+                    </div>
 
                   </div>
 
-                </div>
+                `
+              ).join("")
+            }
 
-              </div>
+          </div>
 
-            `).join("")
-          }
+        </div>
+
+
+        <div class="card section">
+
+          <h2>
+            👤 Current Account
+          </h2>
+
+          <div class="notice">
+
+            <span class="user-chip">
+              ${esc(user.name)}
+            </span>
+
+            <br><br>
+
+            Role:
+            <b>${esc(user.role)}</b>
+
+            <br>
+
+            Email:
+            <b>${esc(user.email)}</b>
+
+          </div>
+
+          <button
+            class="btn danger"
+            onclick="logout()"
+          >
+            Log Out
+          </button>
+
+        </div>
+
+
+        <div class="card section">
+
+          <h2>
+            ✉️ Email / Nudge Testing
+          </h2>
+
+          <div class="notice">
+
+            Current test sender:
+            <b>workflow@ariahgroup.com</b>
+
+            <br><br>
+
+            Recipients:
+
+            <br>
+            naveenm@ariahgroup.com
+            <br>
+            dinos@ariahgroup.com
+            <br>
+            albert@ariahgroup.com
+
+          </div>
+
+          <button
+            class="btn primary"
+            onclick="openNudge()"
+          >
+            Send Test Nudge
+          </button>
+
+        </div>
+
+
+        <div class="card section">
+
+          <h2>
+            📅 Google Calendar
+          </h2>
+
+          <div class="notice">
+
+            ${
+              state.connections.calendar
+              ? "Google Calendar is connected."
+              : "Google Calendar is not connected."
+            }
+
+          </div>
+
+          <button
+            class="btn"
+            onclick="connectCalendar()"
+          >
+            ${
+              state.connections.calendar
+              ? "Sync Calendar Now"
+              : "Connect Calendar"
+            }
+          </button>
 
         </div>
 
       </div>
 
-
-      <div class="card section">
-
-        <h2>🔌 Integrations</h2>
-
-        <div class="notice">
-
-          Google Calendar is connected through
-          Google's OAuth authorization.
-
-          The dashboard reads events from your primary
-          Google Calendar and converts them into tasks.
-
-        </div>
-
-
-        <div class="field">
-
-          <label>Email provider</label>
-
-          <select id="emailProvider">
-
-            <option>
-              Google Workspace / Gmail
-            </option>
-
-            <option>
-              Microsoft 365 / Outlook
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div
-          class="field"
-          style="margin-top:8px"
-        >
-
-          <label>Calendar provider</label>
-
-          <select id="calProvider">
-
-            <option>
-              Google Calendar
-            </option>
-
-            <option>
-              Microsoft 365 / Outlook Calendar
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="integration">
-
-
-          <div class="integration-row">
-
-            <span>✉️ Email</span>
-
-            <span class="status">
-
-              ${
-                state.connections.email
-                  ? "Connected"
-                  : "Ready for OAuth"
-              }
-
-            </span>
-
-            <button
-              class="btn small"
-              onclick="connect('email')"
-            >
-
-              ${
-                state.connections.email
-                  ? "Disconnect"
-                  : "Connect Email"
-              }
-
-            </button>
-
-          </div>
-
-
-          <div class="integration-row">
-
-            <span>📅 Calendar</span>
-
-            <span class="status">
-
-              ${
-                state.connections.calendar
-                  ? "Connected"
-                  : "Ready for OAuth"
-              }
-
-            </span>
-
-
-            <div
-              style="
-                display:flex;
-                gap:6px;
-                flex-wrap:wrap
-              "
-            >
-
-              <button
-                class="btn small green"
-                onclick="connectCalendar()"
-              >
-
-                ${
-                  state.connections.calendar
-                    ? "Reconnect"
-                    : "Connect"
-                }
-
-              </button>
-
-
-              ${
-                state.connections.calendar
-                  ? `
-
-                    <button
-                      class="btn small primary"
-                      onclick="syncGoogleCalendar()"
-                    >
-                      🔄 Sync Now
-                    </button>
-
-                  `
-                  : ""
-              }
-
-            </div>
-
-          </div>
-
-
-          ${
-            state.connections.calendar
-              ? `
-
-                <div
-                  class="notice success"
-                  style="margin-top:10px"
-                >
-
-                  <b>Calendar Sync Active</b>
-
-                  <br>
-
-                  ${state.calendarSync.importedCount || 0}
-                  events were imported during the last sync.
-
-                  ${
-                    state.calendarSync.lastSync
-                      ? `
-                        <br>
-                        Last sync:
-                        ${new Date(
-                          state.calendarSync.lastSync
-                        ).toLocaleString()}
-                      `
-                      : ""
-                  }
-
-                </div>
-
-              `
-              : ""
-          }
-
-
-        </div>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-function connect(k){
-
-  if(k==="calendar"){
-
-    connectCalendar();
-
-    return;
-
-  }
-
-
-  state.connections[k] =
-    !state.connections[k];
-
-  save();
-
-  toast(
-    state.connections[k]
-      ? "Connection marked ready"
-      : "Connection cleared"
-  );
-
-  render();
-
-}
-
-
-/* ============================================================
-   GOOGLE CALENDAR INITIALIZATION
-============================================================ */
-
-function initializeGoogleCalendar(){
-
-  if(
-    !window.google ||
-    !google.accounts ||
-    !google.accounts.oauth2
-  ){
-
-    toast(
-      "Google Calendar is still loading. Please try again."
-    );
-
-    return false;
-
-  }
-
-
-  if(!calendarTokenClient){
-
-    calendarTokenClient =
-      google.accounts.oauth2.initTokenClient({
-
-        client_id:GOOGLE_CLIENT_ID,
-
-        scope:CALENDAR_SCOPE,
-
-        callback:""
-
-      });
-
-  }
-
-
-  return true;
-
-}
-
-
-/* ============================================================
-   CONNECT GOOGLE CALENDAR
-============================================================ */
-
-function connectCalendar(){
-
-  if(!initializeGoogleCalendar()){
-
-    return;
-
-  }
-
-
-  calendarTokenClient.callback =
-    async function(response){
-
-      if(response.error){
-
-        console.error(
-          "Google authorization error:",
-          response
-        );
-
-        toast(
-          "Google Calendar authorization was cancelled."
-        );
-
-        return;
-
-      }
-
-
-      calendarAccessToken =
-        response.access_token;
-
-
-      state.connections.calendar = true;
-
-      save();
-
-      toast(
-        "Google Calendar connected! Syncing..."
-      );
-
-
-      try{
-
-        await syncGoogleCalendar();
-
-      }
-
-      catch(error){
-
-        console.error(error);
-
-        toast(
-          "Connected, but calendar sync failed."
-        );
-
-      }
-
-
-      render();
-
-    };
-
-
-  calendarTokenClient.requestAccessToken({
-
-    prompt:
-      calendarAccessToken
-        ? ""
-        : "consent"
-
-  });
-
-}
-
-
-/* ============================================================
-   GOOGLE CALENDAR API REQUEST
-============================================================ */
-
-async function calendarRequest(
-  url,
-  options={}
-){
-
-  if(!calendarAccessToken){
-
-    throw new Error(
-      "No Google Calendar access token."
-    );
-
-  }
-
-
-  const headers = {
-
-    Authorization:
-      "Bearer " + calendarAccessToken,
-
-    ...(options.headers || {})
-
-  };
-
-
-  const response =
-    await fetch(
-      url,
-      {
-        ...options,
-        headers
-      }
-    );
-
-
-  if(response.status===401){
-
-    calendarAccessToken = null;
-
-    throw new Error(
-      "Google Calendar authorization expired."
-    );
-
-  }
-
-
-  if(!response.ok){
-
-    const text =
-      await response.text();
-
-    throw new Error(
-      `Google Calendar API error ${response.status}: ${text}`
-    );
-
-  }
-
-
-  return response.json();
-
-}
-
-
-/* ============================================================
-   SYNC GOOGLE CALENDAR → DASHBOARD
-============================================================ */
-
-async function syncGoogleCalendar(){
-
-  if(!initializeGoogleCalendar()){
-
-    return;
-
-  }
-
-
-  if(!calendarAccessToken){
-
-    toast(
-      "Please connect Google Calendar first."
-    );
-
-    connectCalendar();
-
-    return;
-
-  }
-
-
-  toast(
-    "Syncing Google Calendar..."
-  );
-
-
-  try{
-
-    /*
-      Pull events from today through the next 90 days.
-
-      Google Calendar's events.list supports:
-      - timeMin
-      - timeMax
-      - singleEvents
-      - orderBy
-      - showDeleted
-    */
-
-    const start =
-      new Date();
-
-    start.setHours(
-      0,0,0,0
-    );
-
-
-    const end =
-      new Date(start);
-
-    end.setDate(
-      end.getDate()+90
-    );
-
-
-    const url =
-      "https://www.googleapis.com/calendar/v3/calendars/"
-      + encodeURIComponent(CALENDAR_ID)
-      + "/events?"
-      + new URLSearchParams({
-
-        timeMin:start.toISOString(),
-
-        timeMax:end.toISOString(),
-
-        singleEvents:"true",
-
-        orderBy:"startTime",
-
-        showDeleted:"false",
-
-        maxResults:"2500"
-
-      }).toString();
-
-
-    const data =
-      await calendarRequest(url);
-
-
-    const events =
-      data.items || [];
-
-
-    let imported = 0;
-
-    let updated = 0;
-
-
-    for(const event of events){
-
-      /*
-        Ignore events without a usable start.
-      */
-
-      if(
-        !event.start ||
-        (!event.start.date &&
-         !event.start.dateTime)
-      ){
-
-        continue;
-
-      }
-
-
-      /*
-        If the calendar event already exists
-        in the dashboard, update it rather than
-        creating another copy.
-      */
-
-      let existing =
-        state.tasks.find(
-          t=>t.googleEventId===event.id
-        );
-
-
-      const due =
-        formatCalendarTaskDate(event);
-
-      const time =
-        formatCalendarTaskTime(event);
-
-
-      const detail =
-        event.description
-        ||
-        event.location
-        ||
-        "Google Calendar event";
-
-
-      if(existing){
-
-        /*
-          Keep completion state controlled by dashboard.
-          But refresh the title/date/time/details
-          from Google Calendar.
-        */
-
-        existing.title =
-          event.summary ||
-          "(Untitled Calendar Event)";
-
-        existing.detail =
-          detail;
-
-        existing.due =
-          due;
-
-        existing.time =
-          time;
-
-        existing.googleEventUpdated =
-          event.updated || null;
-
-        existing.calendarHtmlLink =
-          event.htmlLink || "";
-
-        updated++;
-
-        continue;
-
-      }
-
-
-      /*
-        New Google Calendar event.
-      */
-
-      const newTask = {
-
-        id:Date.now()
-          + Math.floor(Math.random()*100000),
-
-        title:
-          event.summary ||
-          "(Untitled Calendar Event)",
-
-        detail,
-
-        loc:"All Locations",
-
-        dept:"General",
-
-        due,
-
-        time,
-
-        priority:"Medium",
-
-        done:false,
-
-        assignee:state.user,
-
-        source:"Google Calendar",
-
-        googleEventId:event.id,
-
-        googleEventUpdated:
-          event.updated || null,
-
-        calendarHtmlLink:
-          event.htmlLink || "",
-
-        calendarEventType:
-          event.eventType || "default"
-
-      };
-
-
-      state.tasks.push(
-        newTask
-      );
-
-
-      imported++;
-
-    }
-
-
-    state.calendarSync.lastSync =
-      new Date().toISOString();
-
-
-    state.calendarSync.importedCount =
-      imported;
-
-
-    state.activity.unshift(
-
-      `${state.user} synced Google Calendar: ${imported} new event${imported===1?"":"s"} imported${updated ? `, ${updated} updated` : ""}`
-
-    );
-
-
-    state.connections.calendar = true;
-
-
-    save();
-
-
-    toast(
-
-      `Calendar synced: ${imported} new, ${updated} updated`
-
-    );
-
-
-    render();
-
-  }
-
-  catch(error){
-
-    console.error(
-      "Google Calendar sync failed:",
-      error
-    );
-
-
-    /*
-      If the token expired, Google requires
-      the user-driven requestAccessToken()
-      flow again.
-    */
-
-    if(
-      error.message.includes(
-        "authorization expired"
-      )
-    ){
-
-      toast(
-        "Calendar authorization expired. Click Sync again to reconnect."
-      );
-
-    }
-
-    else{
-
-      toast(
-        "Google Calendar sync failed. Check the console for details."
-      );
-
-    }
-
-  }
-
-}
-
-
-/* ============================================================
-   DASHBOARD TASK → GOOGLE CALENDAR
-============================================================ */
-
-async function createGoogleCalendarEventFromTask(task){
-
-  if(!calendarAccessToken){
-
-    throw new Error(
-      "Google Calendar is not connected."
-    );
-
-  }
-
-
-  /*
-    Use a one-hour event.
-
-    If the dashboard task only has a date,
-    create it as an all-day calendar event.
-  */
-
-
-  let event;
-
-
-  if(
-    !task.time ||
-    task.time==="Today" ||
-    task.time==="Tomorrow" ||
-    task.time==="All day"
-  ){
-
-    const startDate =
-      task.due;
-
-
-    const d =
-      new Date(
-        startDate + "T00:00:00"
-      );
-
-
-    const next =
-      new Date(d);
-
-    next.setDate(
-      next.getDate()+1
-    );
-
-
-    event = {
-
-      summary:task.title,
-
-      description:
-        task.detail ||
-        "M&N Foods Dashboard Task",
-
-      start:{
-        date:startDate
-      },
-
-      end:{
-        date:
-          next.toISOString()
-          .slice(0,10)
-      }
-
-    };
-
-  }
-
-  else{
-
-    /*
-      Convert "10:00 AM" to 24-hour time.
-    */
-
-    const parsed =
-      parseTimeString(
-        task.time
-      );
-
-
-    if(!parsed){
-
-      event = {
-
-        summary:task.title,
-
-        description:
-          task.detail ||
-          "M&N Foods Dashboard Task",
-
-        start:{
-          date:task.due
-        },
-
-        end:{
-          date:
-            new Date(
-              new Date(task.due+"T00:00:00")
-                .getTime()
-                + 86400000
-            )
-            .toISOString()
-            .slice(0,10)
-        }
-
-      };
-
-    }
-
-    else{
-
-      const start =
-        new Date(
-          `${task.due}T${parsed.hours}:${parsed.minutes}:00`
-        );
-
-
-      const end =
-        new Date(
-          start.getTime()+60*60*1000
-        );
-
-
-      event = {
-
-        summary:task.title,
-
-        description:
-          task.detail ||
-          "M&N Foods Dashboard Task",
-
-        start:{
-          dateTime:start.toISOString()
-        },
-
-        end:{
-          dateTime:end.toISOString()
-        }
-
-      };
-
-    }
-
-  }
-
-
-  const url =
-    "https://www.googleapis.com/calendar/v3/calendars/"
-    + encodeURIComponent(CALENDAR_ID)
-    + "/events";
-
-
-  return calendarRequest(
-
-    url,
-
-    {
-
-      method:"POST",
-
-      headers:{
-        "Content-Type":"application/json"
-      },
-
-      body:JSON.stringify(event)
-
-    }
-
-  );
-
-}
-
-
-/* ============================================================
-   TIME PARSER
-============================================================ */
-
-function parseTimeString(value){
-
-  if(!value) return null;
-
-
-  const match =
-    String(value)
-      .trim()
-      .match(
-        /^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/i
-      );
-
-
-  if(!match) return null;
-
-
-  let hours =
-    parseInt(match[1],10);
-
-  const minutes =
-    parseInt(match[2] || "00",10);
-
-
-  const ampm =
-    match[3].toUpperCase();
-
-
-  if(ampm==="PM" && hours!==12){
-
-    hours += 12;
-
-  }
-
-
-  if(ampm==="AM" && hours===12){
-
-    hours = 0;
-
-  }
-
-
-  return {
-
-    hours:
-      String(hours).padStart(2,"0"),
-
-    minutes:
-      String(minutes).padStart(2,"0")
-
-  };
+    `;
 
 }
 
@@ -4799,22 +4372,23 @@ function parseTimeString(value){
 
 function switchUser(){
 
-  let i =
+  const i =
     USERS.findIndex(
-      x=>x.name===state.user
+      x => x.name===state.user
     );
 
-
-  state.user =
+  const next =
     USERS[
       (i+1)%USERS.length
-    ].name;
+    ];
 
+  state.user =
+    next.name;
 
   save();
 
   toast(
-    "Switched to " + state.user
+    "Switched to " + next.name
   );
 
   render();
@@ -4823,7 +4397,7 @@ function switchUser(){
 
 
 /* ============================================================
-   EXCEL EXPORT
+   EXPORT EXCEL
 ============================================================ */
 
 function exportXLS(){
@@ -4837,128 +4411,98 @@ function exportXLS(){
       "Department",
       "Amount",
       "Due/Status",
-      "Assigned",
-      "Source"
+      "Assigned"
     ],
 
     ...state.tasks.map(
-      t=>[
+      t => [
         "Task",
         t.title,
         t.loc,
         t.dept,
         "",
         t.due,
-        t.assignee,
-        t.source || "Dashboard"
+        t.assignee
       ]
     ),
 
     ...state.payments.map(
-      p=>[
+      p => [
         "Payment",
         p.title,
         p.loc,
         "",
         p.amount,
         p.status,
-        p.due,
-        "Dashboard"
+        p.due
       ]
     ),
 
     ...state.purchases.map(
-      p=>[
+      p => [
         "Purchase",
         p.title,
         p.loc,
         "",
         p.amount,
         p.status,
-        p.requester,
-        "Dashboard"
+        p.requester
       ]
     )
 
   ];
 
-
-  const table =
-
-    "<table><tr>"
-    +
-
+  let table =
+    "<table><tr>" +
     rows[0]
       .map(
-        x=>"<th>"+esc(x)+"</th>"
+        x => "<th>"+esc(x)+"</th>"
       )
-      .join("")
-
-    +
-
-    "</tr>"
-
-    +
+      .join("") +
+    "</tr>" +
 
     rows
       .slice(1)
       .map(
-        r=>
-          "<tr>"
-          +
+        r =>
+          "<tr>" +
           r.map(
-            x=>"<td>"+esc(x)+"</td>"
-          ).join("")
-          +
+            x =>
+              "<td>"+esc(x)+"</td>"
+          ).join("") +
           "</tr>"
       )
-      .join("")
-
-    +
+      .join("") +
 
     "</table>";
 
-
   const blob =
     new Blob(
-
       [
-        "<html><head><meta charset='utf-8'>"
-        +
-        "</head><body>"
-        +
-        table
-        +
+        "<html><head><meta charset='utf-8'></head><body>",
+        table,
         "</body></html>"
       ],
-
       {
         type:
           "application/vnd.ms-excel"
       }
-
     );
-
 
   const a =
     document.createElement("a");
 
-
   a.href =
     URL.createObjectURL(blob);
-
 
   a.download =
     "MN_Foods_Report.xls";
 
-
   a.click();
-
 
   URL.revokeObjectURL(
     a.href
   );
-
 
   toast(
     "Excel report exported"
@@ -4968,267 +4512,36 @@ function exportXLS(){
 
 
 /* ============================================================
-   ICS DOWNLOAD
+   INITIALIZE
 ============================================================ */
 
-function downloadICS(){
+if(state.loggedIn){
 
-  let start =
-    new Date();
+  showApp();
 
+}else{
 
-  start.setHours(
-    8,0,0,0
-  );
-
-
-  let dt =
-    start
-      .toISOString()
-      .replace(/[-:]/g,"")
-      .replace(/\.\d{3}Z/,"Z");
-
-
-  let ics =
-
-`BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//M&N Foods LLC//Dashboard//EN
-BEGIN:VEVENT
-UID:${Date.now()}@mnfoods
-DTSTAMP:${dt}
-DTSTART:${dt}
-DURATION:PT15M
-RRULE:FREQ=DAILY
-SUMMARY:M&N Foods Daily CEO Reminder
-DESCRIPTION:Review today's M&N Foods checklist, priority items, payments, purchasing and maintenance.
-END:VEVENT
-END:VCALENDAR`;
-
-
-  const a =
-    document.createElement("a");
-
-
-  a.href =
-    URL.createObjectURL(
-      new Blob(
-        [ics],
-        {type:"text/calendar"}
-      )
-    );
-
-
-  a.download =
-    "MN-Foods-Daily-Reminder.ics";
-
-
-  a.click();
+  document.getElementById(
+    "loginScreen"
+  ).style.display="grid";
 
 }
 
 
-/* ============================================================
-   GOOGLE CALENDAR EVENTS LIST MODAL
-============================================================ */
-
-async function showGoogleCalendarEvents(){
-
-  if(!calendarAccessToken){
-
-    toast(
-      "Connect Google Calendar first."
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    const start =
-      new Date();
-
-    start.setHours(0,0,0,0);
-
-
-    const end =
-      new Date(start);
-
-    end.setDate(
-      end.getDate()+30
-    );
-
-
-    const url =
-      "https://www.googleapis.com/calendar/v3/calendars/"
-      + encodeURIComponent(CALENDAR_ID)
-      + "/events?"
-      + new URLSearchParams({
-
-        timeMin:start.toISOString(),
-
-        timeMax:end.toISOString(),
-
-        singleEvents:"true",
-
-        orderBy:"startTime",
-
-        maxResults:"100"
-
-      }).toString();
-
-
-    const data =
-      await calendarRequest(url);
-
-
-    const events =
-      data.items || [];
-
-
-    document.getElementById(
-      "modalTitle"
-    ).textContent =
-      "Google Calendar Events";
-
-
-    document.getElementById(
-      "modalBody"
-    ).innerHTML = `
-
-      <div class="notice success">
-
-        Found
-        <b>${events.length}</b>
-        upcoming Google Calendar event${events.length===1?"":"s"}.
-
-      </div>
-
-
-      ${
-        events.map(event=>`
-
-          <div class="calendar-event">
-
-            <div class="calendar-event-title">
-
-              📅
-              ${esc(
-                event.summary ||
-                "(Untitled Event)"
-              )}
-
-            </div>
-
-            <div class="calendar-event-meta">
-
-              ${esc(
-                formatCalendarDateTime(event)
-              )}
-
-            </div>
-
-
-            ${
-              event.description
-                ? `
-                  <div
-                    class="calendar-event-meta"
-                    style="margin-top:5px"
-                  >
-                    ${esc(event.description)}
-                  </div>
-                `
-                : ""
-            }
-
-
-            ${
-              event.htmlLink
-                ? `
-                  <div style="margin-top:6px">
-                    <a
-                      href="${esc(event.htmlLink)}"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      Open in Google Calendar →
-                    </a>
-                  </div>
-                `
-                : ""
-            }
-
-          </div>
-
-        `).join("")
-
-        ||
-
-        '<div class="sub">No upcoming events.</div>'
-
-      }
-
-
-      <div
-        style="
-          display:flex;
-          justify-content:flex-end;
-          margin-top:14px
-        "
-      >
-
-        <button
-          class="btn primary"
-          onclick="closeModal()"
-        >
-          Done
-        </button>
-
-      </div>
-
-    `;
-
-
-    document
-      .getElementById("modal")
-      .classList.add("show");
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    toast(
-      "Unable to load Google Calendar events."
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   STARTUP
-============================================================ */
-
-render();
+/*
+  If you want to start with the login screen every time
+  during testing, uncomment the following:
+
+  state.loggedIn=false;
+  save();
+*/
 
 </script>
 
-
-<!-- ============================================================
-     GOOGLE IDENTITY SERVICES
-============================================================ -->
-
+<!-- Google Identity Services -->
 <script
-  src="https://accounts.google.com/gsi/client"
-  async
-  defer
-></script>
+  src="https://accounts.google.com/gsi/client">
+</script>
 
 </body>
 </html>
