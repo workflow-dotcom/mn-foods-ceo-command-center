@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>M&N Foods LLC Dashboard</title>
+<style>
+:root{--bg:#f5f7fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e8ef;--blue:#2563eb;--green:#16a34a;--red:#dc2626;--orange:#ea580c;--purple:#7c3aed;--shadow:0 2px 12px rgba(20,32,55,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:flex;min-height:100vh}.side{width:92px;background:#fff;border-right:1px solid var(--line);padding:18px 10px;position:fixed;inset:0 auto 0 0;z-index:5}.brand{font-weight:800;text-align:center;font-size:11px;margin-bottom:22px}.brand-icon{width:42px;height:42px;border:2px solid #22a559;border-radius:12px;display:grid;place-items:center;margin:auto auto 6px;font-size:21px}.nav button{width:100%;border:0;background:transparent;border-radius:12px;padding:10px 4px;margin:3px 0;color:#344054;font-size:11px}.nav button.active,.nav button:hover{background:#eef8f1;color:#16803d}.nav .ico{font-size:20px;display:block;margin-bottom:3px}.main{margin-left:92px;width:calc(100% - 92px)}.top{background:#fff;border-bottom:1px solid var(--line);padding:16px 26px;display:flex;justify-content:space-between;align-items:center;gap:15px}.greet h1{margin:0;font-size:25px}.greet p{margin:2px 0 0;color:var(--muted)}.top-actions{display:flex;gap:9px;align-items:center}.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 13px;font-weight:650;color:#25324a}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn.green{background:#eaf8ef;border-color:#bce8ca;color:#15783b}.btn.small{padding:6px 9px;font-size:13px}.content{padding:16px 24px 30px;max-width:1600px;margin:auto}.filters{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.filters strong{font-size:12px;margin-right:3px}.filter{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 11px;color:#344054}.filter.active{background:#eaf8ef;border-color:#9ed8b0;color:#18783c}.locations{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}.location{padding:13px}.lochead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.locname{font-size:17px;font-weight:750}.pill{font-size:11px;font-weight:700;border-radius:99px;padding:4px 8px}.pill.red{background:#fff0f0;color:#b42318}.pill.orange{background:#fff4e8;color:#b54708}.pill.green{background:#edf9f0;color:#18783c}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.metric{text-align:center;border-right:1px solid var(--line);padding:4px}.metric:last-child{border:0}.metric b{display:block;font-size:17px}.metric span{font-size:10px;color:var(--muted)}.location a{display:block;margin-top:9px;color:#16803d;font-weight:650;font-size:13px;cursor:pointer}.grid{display:grid;grid-template-columns:1.25fr .95fr 1.1fr;gap:10px;margin-bottom:10px}.section{padding:14px}.section h2{font-size:16px;margin:0}.sub{color:var(--muted);font-size:12px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.count{background:#edf3ff;color:#2454b5;border-radius:99px;padding:2px 7px;font-size:11px}.task{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid #eef1f5}.task:last-child{border-bottom:0}.task input{width:17px;height:17px}.task-title{font-weight:650}.task-meta{font-size:11px;color:var(--muted)}.tag{font-size:10px;border-radius:6px;padding:3px 6px;background:#f3f5f8;color:#475467;white-space:nowrap}.priority-row{display:grid;grid-template-columns:34px 35px 1fr 18px;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #eef1f5}.priority-icon{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800}.redbg{background:#fff0f0;color:#d92d20}.orangebg{background:#fff4e8;color:#dc6803}.bluebg{background:#edf4ff;color:#2563eb}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:9px}.day{border:1px solid var(--line);border-radius:9px;padding:7px 3px;text-align:center}.day.today{border-color:#70c58d;background:#f1fbf4}.day .dow{font-size:10px;color:var(--muted)}.day b{display:block;font-size:14px}.day span{font-size:10px;color:#18783c}.reports{display:grid;grid-template-columns:1fr 1fr;gap:8px}.report{border:1px solid var(--line);border-radius:10px;padding:10px}.report b{display:block;font-size:21px}.report span{font-size:11px;color:var(--muted)}.report-actions{display:flex;gap:7px;margin-top:10px}.bottom{display:grid;grid-template-columns:1.25fr .9fr .9fr;gap:10px}.quick{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}.quick button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 4px;font-size:11px}.quick .qico{font-size:20px;display:block;margin-bottom:4px}.activity,.nudge{display:grid;gap:6px}.activity div,.nudge div{padding:7px 0;border-bottom:1px solid #eef1f5;font-size:12px}.integration{margin-top:10px}.integration-row{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px;margin-top:7px}.status{font-size:11px;color:var(--green);font-weight:700}.footer{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;padding-top:12px}.page{display:none}.page.active{display:block}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;border-bottom:1px solid var(--line);padding:9px;font-size:13px}.table th{color:#667085;font-size:11px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:4px}.field input,.field select,.field textarea{width:100%;border:1px solid #d9dee8;border-radius:9px;padding:9px;background:#fff}.field textarea{min-height:80px}.modal{position:fixed;inset:0;background:rgba(16,24,40,.35);display:none;place-items:center;z-index:20;padding:20px}.modal.show{display:grid}.modal-box{background:#fff;border-radius:15px;width:min(620px,100%);padding:18px;box-shadow:0 20px 50px rgba(0,0,0,.18)}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.close{border:0;background:#f2f4f7;border-radius:50%;width:32px;height:32px}.notice{padding:10px 12px;border-radius:9px;background:#f4f8ff;color:#344054;font-size:12px;margin-bottom:10px}.toast{position:fixed;right:20px;bottom:20px;background:#172033;color:#fff;padding:10px 14px;border-radius:10px;display:none;z-index:50}.toast.show{display:block}
+@media(max-width:1100px){.grid,.bottom{grid-template-columns:1fr 1fr}.grid .section:first-child{grid-column:1/-1}.locations{grid-template-columns:1fr}.quick{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){.side{width:64px}.main{margin-left:64px;width:calc(100% - 64px)}.top{padding:12px 14px}.content{padding:12px}.top-actions .btn:not(.primary){display:none}.greet h1{font-size:19px}.grid,.bottom{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border:0}.formgrid{grid-template-columns:1fr}.footer{display:block}.footer span{display:block;margin-top:4px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand"><div class="brand-icon">🍴</div>M&N FOODS<br><span style="font-weight:500">LLC</span></div>
+  <nav class="nav" id="nav"></nav>
+</aside>
+<main class="main">
+<header class="top">
+ <div class="greet"><h1 id="greeting">Good morning! 👋</h1><p id="dateLine"></p></div>
+ <div class="top-actions"><button class="btn" onclick="openNudge()">🔔 <span id="nudgeBadge">0</span></button><button class="btn" onclick="switchUser()">👤 <span id="userName">Dianne</span> ▾</button></div>
+</header>
+<div class="content">
+<section id="home" class="page active"></section>
+<section id="tasks" class="page"></section>
+<section id="payments" class="page"></section>
+<section id="purchasing" class="page"></section>
+<section id="projects" class="page"></section>
+<section id="reports" class="page"></section>
+<section id="reminders" class="page"></section>
+<section id="nudges" class="page"></section>
+<section id="activity" class="page"></section>
+<section id="settings" class="page"></section>
+</div>
+</main>
+</div>
+<div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><h2 id="modalTitle" style="margin:0"></h2><button class="close" onclick="closeModal()">×</button></div><div id="modalBody"></div></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const USERS=[
+ {name:"Dianne",role:"Admin"},
+ {name:"Naveen",role:"CEO"},
+ {name:"Dinos",role:"Staff"},
+ {name:"Albert",role:"Staff"}
+];
+const LOCS=["BK 1869","BK 2127","BK 20769"];
+const DEPTS=["Admin","Purchasing","Maintenance & Repair","General"];
+let state=JSON.parse(localStorage.getItem("mnfoods_v1")||"null")||{
+ user:"Dianne",dept:"All",loc:"All",
+ tasks:[
+  {id:1,title:"Approve vendor payment",detail:"Invoice #INV-2451",loc:"BK 1869",dept:"Purchasing",due:"2026-08-12",time:"10:00 AM",priority:"High",done:false,assignee:"Naveen"},
+  {id:2,title:"Follow up on freezer repair",detail:"Walk-in cooler not cooling",loc:"BK 2127",dept:"Maintenance & Repair",due:"2026-08-12",time:"Today",priority:"Medium",done:false,assignee:"Dinos"},
+  {id:3,title:"Submit payroll documents",detail:"Weekly payroll report",loc:"All Locations",dept:"Admin",due:"2026-08-12",time:"Today",priority:"High",done:false,assignee:"Dianne"},
+  {id:4,title:"Order replacement part",detail:"Condenser fan motor",loc:"BK 20769",dept:"Purchasing",due:"2026-08-12",time:"2:00 PM",priority:"Medium",done:false,assignee:"Albert"},
+  {id:5,title:"Daily sales summary",detail:"July 11, 2026",loc:"All Locations",dept:"General",due:"2026-08-11",time:"Completed",priority:"Low",done:true,assignee:"Dianne"},
+  {id:6,title:"Review vendor quote",detail:"Arctic Refrigeration",loc:"BK 2127",dept:"Purchasing",due:"2026-08-13",time:"Tomorrow",priority:"Medium",done:false,assignee:"Naveen"}
+ ],
+ payments:[
+  {id:11,title:"Vendor payment",amount:1250,loc:"BK 2127",status:"Pending",due:"2026-08-12"}
+ ],
+ purchases:[
+  {id:21,title:"Replacement part",amount:480,loc:"BK 20769",status:"Pending",requester:"Albert"}
+ ],
+ projects:[],
+ nudges:[],
+ activity:[
+  "Naveen added a payment of $1,250.00 for BK 2127",
+  "Dinos updated task “Freezer repair” for BK 2127",
+  "Albert marked “Daily sales summary” as completed",
+  "Dianne added a purchase request for BK 1869"
+ ],
+ reminder:{enabled:true,time:"08:00",email:true,calendar:true},
+ connections:{email:false,calendar:false}
+};
+let page="home";
+function save(){localStorage.setItem("mnfoods_v1",JSON.stringify(state));}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function today(){return new Date().toISOString().slice(0,10)}
+function fmtMoney(n){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:2}).format(Number(n)||0)}
+function filteredTasks(){return state.tasks.filter(t=>(state.dept==="All"||t.dept===state.dept)&&(state.loc==="All"||t.loc===state.loc))}
+function openTasks(){return filteredTasks().filter(t=>!t.done)}
+function toast(x){let t=document.getElementById("toast");t.textContent=x;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+function nav(){
+ const items=[["home","⌂","Home"],["tasks","☑","Tasks"],["payments","$","Payments"],["purchasing","🛒","Purchasing"],["projects","▣","Projects"],["reports","▥","Reports"],["reminders","♧","Reminders"],["nudges","📣","Nudge Center"],["activity","◷","Activity"],["settings","⚙","Settings"]];
+ document.getElementById("nav").innerHTML=items.map(x=>`<button class="${page===x[0]?"active":""}" onclick="go('${x[0]}')"><span class="ico">${x[1]}</span>${x[2]}</button>`).join("");
+}
+function go(p){page=p;document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(p).classList.add("active");render();nav();window.scrollTo(0,0)}
+function render(){
+ document.getElementById("userName").textContent=state.user;
+ document.getElementById("nudgeBadge").textContent=state.nudges.filter(n=>!n.read).length;
+ let d=new Date();document.getElementById("greeting").textContent=`Good morning, ${state.user}! 👋`;
+ document.getElementById("dateLine").textContent=d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})+" • Eastern Time";
+ nav();
+ if(page==="home")home(); if(page==="tasks")listPage("tasks"); if(page==="payments")paymentsPage(); if(page==="purchasing")purchasingPage(); if(page==="projects")projectsPage(); if(page==="reports")reportsPage(); if(page==="reminders")remindersPage(); if(page==="nudges")nudgesPage(); if(page==="activity")activityPage(); if(page==="settings")settingsPage();
+}
+function filters(){
+ return `<div class="filters"><strong>DEPARTMENT:</strong>${["All",...DEPTS].map(d=>`<button class="filter ${state.dept===d?"active":""}" onclick="setDept('${d}')">${d}</button>`).join("")}</div>`;
+}
+function setDept(d){state.dept=d;save();render()}
+function setLoc(l){state.loc=l;save();render()}
+function locationCard(loc){
+ let a=state.tasks.filter(t=>!t.done&&t.loc===loc), pay=state.payments.filter(x=>x.loc===loc&&x.status!=="Paid").length, maint=a.filter(x=>x.dept==="Maintenance & Repair").length, pur=a.filter(x=>x.dept==="Purchasing").length, high=a.filter(x=>x.priority==="High").length;
+ return `<div class="card location" onclick="setLoc('${loc}')"><div class="lochead"><span class="locname">📍 ${loc}</span><span class="pill ${high?'red':'green'}">${high?high+" Urgent":"On track"}</span></div><div class="metrics"><div class="metric"><b>${a.length}</b><span>Open Items</span></div><div class="metric"><b>${pay}</b><span>Payments</span></div><div class="metric"><b>${maint}</b><span>Maintenance</span></div><div class="metric"><b>${pur}</b><span>Purchasing</span></div></div><a onclick="event.stopPropagation();setLoc('${loc}')">View all items →</a></div>`;
+}
+function taskRow(t){return `<div class="task"><input type="checkbox" ${t.done?"checked":""} onchange="toggleTask(${t.id})"><div><div class="task-title">${esc(t.title)}</div><div class="task-meta">${esc(t.detail)} • ${esc(t.assignee||"Unassigned")}</div></div><span class="tag">${esc(t.loc)} · ${esc(t.time)}</span></div>`}
+function home(){
+ let ft=filteredTasks(), open=ft.filter(t=>!t.done), td=open.filter(t=>t.due===today()), high=open.filter(t=>t.priority==="High"), overdue=open.filter(t=>t.due<today()), done=ft.filter(t=>t.done).length, pct=ft.length?Math.round(done/ft.length*100):0;
+ let week=[0,1,2,3,4,5,6].map(i=>{let d=new Date();d.setDate(d.getDate()+i);let ds=d.toISOString().slice(0,10),n=open.filter(t=>t.due===ds).length;return `<div class="day ${i===0?"today":""}"><div class="dow">${d.toLocaleDateString("en-US",{weekday:"short"}).toUpperCase()}</div><b>${d.getDate()}</b><span>${n} item${n===1?"":"s"}</span></div>`}).join("");
+ document.getElementById("home").innerHTML=`
+ ${filters()}
+ <div class="locations">${LOCS.map(locationCard).join("")}</div>
+ <div class="grid">
+  <div class="card section"><div class="section-head"><div><h2>☑️ Today's Checklist <span class="count">${td.length}</span></h2><div class="sub">The few things that need attention today.</div></div><button class="btn small primary" onclick="openForm('task')">＋ Add Task</button></div>${td.length?td.map(taskRow).join(""):'<div class="sub">Nothing due today. You’re all caught up. 🎉</div>'}<div style="margin-top:8px"><button class="btn small" onclick="go('tasks')">View all tasks →</button></div></div>
+  <div class="card section"><div class="section-head"><div><h2>Priority</h2><div class="sub">Only the items that need attention.</div></div></div>
+   <div class="priority-row"><span class="priority-icon redbg">!</span><b>${overdue.length}</b><span>Overdue</span><span>›</span></div>
+   <div class="priority-row"><span class="priority-icon orangebg">!</span><b>${high.length}</b><span>High Priority</span><span>›</span></div>
+   <div class="priority-row"><span class="priority-icon bluebg">✓</span><b>${td.length}</b><span>Due Today</span><span>›</span></div>
+   <div class="priority-row"><span class="priority-icon bluebg">7</span><b>${open.filter(t=>t.due>=today()).length}</b><span>Open This Week</span><span>›</span></div>
+  </div>
+  <div class="card section"><div class="section-head"><div><h2>Reports</h2><div class="sub">Simple overview.</div></div><select class="filter" onchange="toast('Report range: '+this.value)"><option>This Week</option><option>This Month</option></select></div>
+   <div class="reports"><div class="report"><b>${ft.length}</b><span>Tasks</span></div><div class="report"><b>${fmtMoney(state.payments.reduce((s,x)=>s+Number(x.amount||0),0))}</b><span>Payments</span></div><div class="report"><b>${state.purchases.length}</b><span>Purchasing Requests</span></div><div class="report"><b>${state.projects.length}</b><span>Projects</span></div></div>
+   <div class="report-actions"><button class="btn small" onclick="go('reports')">View Reports →</button><button class="btn small" onclick="exportXLS()">Export Excel</button><button class="btn small" onclick="window.print()">Export PDF</button></div>
+  </div>
+ </div>
+ <div class="grid">
+  <div class="card section"><div class="section-head"><div><h2>This Week</h2><div class="sub">Upcoming workload at a glance.</div></div></div><div class="week">${week}</div></div>
+  <div class="card section"><h2>🔔 Quick Actions</h2><div class="sub">Big, simple buttons for common actions.</div><div class="quick" style="margin-top:10px"><button onclick="openForm('task')"><span class="qico">＋</span>Add Task</button><button onclick="openForm('payment')"><span class="qico">$</span>Add Payment</button><button onclick="openForm('purchase')"><span class="qico">🛒</span>Add Purchase</button><button onclick="openForm('maintenance')"><span class="qico">🔧</span>Maintenance</button><button onclick="openForm('project')"><span class="qico">📁</span>Add Project</button><button onclick="go('reminders')"><span class="qico">🔔</span>Set Reminder</button></div></div>
+  <div class="card section"><div class="section-head"><h2>Nudge Center <span class="count">${state.nudges.filter(n=>!n.read).length}</span></h2><button class="btn small" onclick="openNudge()">Send Nudge</button></div><div class="nudge">${state.nudges.filter(n=>!n.read).slice(0,3).map(n=>`<div>🔔 ${esc(n.text)} <span style="float:right">${esc(n.to)}</span></div>`).join("")||'<div class="sub">No new nudges.</div>'}</div></div>
+ </div>
+ <div class="card section"><h2>Integrations</h2><div class="sub">Connect email and calendar after choosing your provider.</div>
+  <div class="integration-row"><span>✉️ Email</span><span class="status">${state.connections.email?"● Connected":"○ Not connected"}</span><button class="btn small" onclick="go('settings')">${state.connections.email?"Manage":"Connect"}</button></div>
+  <div class="integration-row"><span>📅 Calendar</span><span class="status">${state.connections.calendar?"● Connected":"○ Not connected"}</span><button class="btn small" onclick="go('settings')">${state.connections.calendar?"Manage":"Connect"}</button></div>
+ </div>
+ <div class="footer"><span>All times Eastern Time (ET)</span><span>Data saved automatically in this browser</span><span>Local prototype • ready for secure OAuth integration</span></div>`;
+}
+function toggleTask(id){let t=state.tasks.find(x=>x.id===id);if(t)t.done=!t.done;state.activity.unshift(`${state.user} ${t.done?"completed":"reopened"} task “${t.title}”`);save();render()}
+function openForm(type){
+ const titles={task:"Add Task",payment:"Add Payment",purchase:"Add Purchasing Request",maintenance:"Add Maintenance Request",project:"Add Project"};
+ let body="";
+ if(type==="task"||type==="maintenance") body=`<div class="formgrid"><div class="field"><label>Task</label><input id="f_title" placeholder="What needs to be done?"></div><div class="field"><label>Location</label><select id="f_loc">${LOCS.map(x=>`<option>${x}</option>`).join("")}<option>All Locations</option></select></div><div class="field"><label>Department</label><select id="f_dept">${DEPTS.map(x=>`<option>${x}</option>`).join("")}</select></div><div class="field"><label>Due Date</label><input id="f_due" type="date" value="${today()}"></div><div class="field"><label>Priority</label><select id="f_priority"><option>Medium</option><option>High</option><option>Low</option></select></div><div class="field"><label>Assigned To</label><select id="f_assignee">${USERS.map(x=>`<option>${x.name}</option>`).join("")}</select></div></div><div class="field" style="margin-top:10px"><label>Notes</label><textarea id="f_detail" placeholder="Optional details"></textarea></div>`;
+ if(type==="payment") body=`<div class="formgrid"><div class="field"><label>Payment / Vendor</label><input id="f_title" placeholder="Vendor payment"></div><div class="field"><label>Amount (USD)</label><input id="f_amount" type="number" step=".01"></div><div class="field"><label>Location</label><select id="f_loc">${LOCS.map(x=>`<option>${x}</option>`).join("")}</select></div><div class="field"><label>Due Date</label><input id="f_due" type="date" value="${today()}"></div></div>`;
+ if(type==="purchase") body=`<div class="formgrid"><div class="field"><label>Request</label><input id="f_title" placeholder="What needs to be purchased?"></div><div class="field"><label>Amount (USD)</label><input id="f_amount" type="number" step=".01"></div><div class="field"><label>Location</label><select id="f_loc">${LOCS.map(x=>`<option>${x}</option>`).join("")}</select></div><div class="field"><label>Requester</label><select id="f_assignee">${USERS.map(x=>`<option>${x.name}</option>`).join("")}</select></div></div>`;
+ if(type==="project") body=`<div class="formgrid"><div class="field"><label>Project</label><input id="f_title" placeholder="Project name"></div><div class="field"><label>Location</label><select id="f_loc">${LOCS.map(x=>`<option>${x}</option>`).join("")}</select></div></div>`;
+ document.getElementById("modalTitle").textContent=titles[type];document.getElementById("modalBody").innerHTML=body+`<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn primary" onclick="saveForm('${type}')">Save</button></div>`;document.getElementById("modal").classList.add("show");
+}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function saveForm(type){
+ let title=document.getElementById("f_title")?.value.trim();if(!title){toast("Please enter a name.");return}
+ if(type==="payment"){state.payments.push({id:Date.now(),title,amount:Number(document.getElementById("f_amount").value||0),loc:document.getElementById("f_loc").value,status:"Pending",due:document.getElementById("f_due").value})}
+ else if(type==="purchase"){state.purchases.push({id:Date.now(),title,amount:Number(document.getElementById("f_amount").value||0),loc:document.getElementById("f_loc").value,status:"Pending",requester:document.getElementById("f_assignee").value})}
+ else if(type==="project"){state.projects.push({id:Date.now(),title,loc:document.getElementById("f_loc").value,status:"Open"})}
+ else {state.tasks.push({id:Date.now(),title,detail:document.getElementById("f_detail")?.value||"",loc:document.getElementById("f_loc").value,dept:document.getElementById("f_dept").value,due:document.getElementById("f_due").value,time:"Today",priority:document.getElementById("f_priority").value,done:false,assignee:document.getElementById("f_assignee").value})}
+ state.activity.unshift(`${state.user} added ${type}: ${title}`);save();closeModal();toast("Saved successfully");render()
+}
+function listPage(kind){
+ let rows=filteredTasks();
+ document.getElementById(kind).innerHTML=`<div class="card section"><div class="section-head"><div><h2>Tasks</h2><div class="sub">Keep this list simple: add, assign, complete.</div></div><button class="btn primary" onclick="openForm('task')">＋ Add Task</button></div>${filters()}<table class="table"><thead><tr><th></th><th>Task</th><th>Location</th><th>Department</th><th>Due</th><th>Assigned</th></tr></thead><tbody>${rows.map(t=>`<tr><td><input type="checkbox" ${t.done?"checked":""} onchange="toggleTask(${t.id})"></td><td><b>${esc(t.title)}</b><br><span class="sub">${esc(t.detail)}</span></td><td>${esc(t.loc)}</td><td>${esc(t.dept)}</td><td>${esc(t.due)}</td><td>${esc(t.assignee)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+function paymentsPage(){document.getElementById("payments").innerHTML=`<div class="card section"><div class="section-head"><div><h2>Payments</h2><div class="sub">Pending payments in USD.</div></div><button class="btn primary" onclick="openForm('payment')">＋ Add Payment</button></div><table class="table"><thead><tr><th>Payment</th><th>Location</th><th>Amount</th><th>Status</th><th>Due</th></tr></thead><tbody>${state.payments.map(p=>`<tr><td>${esc(p.title)}</td><td>${esc(p.loc)}</td><td>${fmtMoney(p.amount)}</td><td>${esc(p.status)}</td><td>${esc(p.due)}</td></tr>`).join("")}</tbody></table></div>`}
+function purchasingPage(){document.getElementById("purchasing").innerHTML=`<div class="card section"><div class="section-head"><div><h2>Purchasing</h2><div class="sub">Requests waiting for action.</div></div><button class="btn primary" onclick="openForm('purchase')">＋ Add Purchase</button></div><table class="table"><thead><tr><th>Request</th><th>Location</th><th>Amount</th><th>Requester</th><th>Status</th></tr></thead><tbody>${state.purchases.map(p=>`<tr><td>${esc(p.title)}</td><td>${esc(p.loc)}</td><td>${fmtMoney(p.amount)}</td><td>${esc(p.requester)}</td><td>${esc(p.status)}</td></tr>`).join("")}</tbody></table></div>`}
+function projectsPage(){document.getElementById("projects").innerHTML=`<div class="card section"><div class="section-head"><div><h2>Projects</h2><div class="sub">Keep larger work visible without cluttering the home screen.</div></div><button class="btn primary" onclick="openForm('project')">＋ Add Project</button></div><table class="table"><thead><tr><th>Project</th><th>Location</th><th>Status</th></tr></thead><tbody>${state.projects.map(p=>`<tr><td>${esc(p.title)}</td><td>${esc(p.loc)}</td><td>${esc(p.status)}</td></tr>`).join("")||'<tr><td colspan="3">No projects yet.</td></tr>'}</tbody></table></div>`}
+function reportsPage(){document.getElementById("reports").innerHTML=`<div class="card section"><div class="section-head"><div><h2>Reports & Exports</h2><div class="sub">Export the current M&N Foods data for sharing or filing.</div></div><div><button class="btn" onclick="exportXLS()">Export Excel</button> <button class="btn" onclick="window.print()">Export PDF</button></div></div><div class="reports"><div class="report"><b>${state.tasks.length}</b><span>Total Tasks</span></div><div class="report"><b>${fmtMoney(state.payments.reduce((s,x)=>s+Number(x.amount||0),0))}</b><span>Payment Value</span></div><div class="report"><b>${state.purchases.length}</b><span>Purchase Requests</span></div><div class="report"><b>${state.projects.length}</b><span>Projects</span></div></div></div>`}
+function remindersPage(){document.getElementById("reminders").innerHTML=`<div class="grid"><div class="card section"><h2>🔔 Daily Reminder</h2><div class="sub">Daily reminders can later be sent by the secure backend.</div><div style="margin-top:12px"><label><input type="checkbox" id="r_enabled" ${state.reminder.enabled?"checked":""}> Enable daily reminder</label></div><div class="formgrid" style="margin-top:10px"><div class="field"><label>Time (ET)</label><input id="r_time" type="time" value="${state.reminder.time}"></div></div><div style="margin-top:10px"><label><input type="checkbox" id="r_email" ${state.reminder.email?"checked":""}> Email</label> &nbsp; <label><input type="checkbox" id="r_cal" ${state.reminder.calendar?"checked":""}> Calendar</label></div><button class="btn primary" style="margin-top:12px" onclick="saveReminder()">Save Reminder</button></div><div class="card section"><h2>📅 Calendar Reminder</h2><div class="notice">The HTML prototype can export calendar files, but recurring live reminders require the secure Calendar/OAuth connection.</div><button class="btn" onclick="downloadICS()">Download Daily Reminder .ics</button></div></div>`}
+function saveReminder(){state.reminder={enabled:document.getElementById("r_enabled").checked,time:document.getElementById("r_time").value,email:document.getElementById("r_email").checked,calendar:document.getElementById("r_cal").checked};save();toast("Reminder settings saved")}
+function nudgesPage(){document.getElementById("nudges").innerHTML=`<div class="card section"><div class="section-head"><div><h2>📣 Nudge Center</h2><div class="sub">Any team member can nudge another person.</div></div><button class="btn primary" onclick="openNudge()">Send Nudge</button></div>${state.nudges.map(n=>`<div class="task"><div>🔔</div><div><div class="task-title">${esc(n.text)}</div><div class="task-meta">From ${esc(n.from)} → ${esc(n.to)}</div></div><button class="btn small" onclick="readNudge(${n.id})">${n.read?"Read":"Mark read"}</button></div>`).join("")||'<div class="sub">No nudges yet.</div>'}</div>`}
+function openNudge(){document.getElementById("modalTitle").textContent="Send a Nudge";document.getElementById("modalBody").innerHTML=`<div class="field"><label>Send to</label><select id="n_to">${USERS.filter(x=>x.name!==state.user).map(x=>`<option>${x.name}</option>`).join("")}</select></div><div class="field" style="margin-top:10px"><label>Message</label><textarea id="n_text" placeholder="Example: Please review the pending vendor payment."></textarea></div><div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="btn primary" onclick="sendNudge()">Send Nudge</button></div>`;document.getElementById("modal").classList.add("show")}
+function sendNudge(){let text=document.getElementById("n_text").value.trim();if(!text)return toast("Write a short message first.");state.nudges.unshift({id:Date.now(),from:state.user,to:document.getElementById("n_to").value,text,read:false});state.activity.unshift(`${state.user} sent a nudge`);save();closeModal();toast("Nudge saved");render()}
+function readNudge(id){let n=state.nudges.find(x=>x.id===id);if(n)n.read=true;save();render()}
+function activityPage(){document.getElementById("activity").innerHTML=`<div class="card section"><h2>Recent Activity</h2><div class="activity" style="margin-top:8px">${state.activity.map(x=>`<div>• ${esc(x)}</div>`).join("")}</div></div>`}
+function settingsPage(){document.getElementById("settings").innerHTML=`<div class="grid"><div class="card section"><h2>👤 Users</h2><div class="sub">Four-person access model.</div><div style="margin-top:10px">${USERS.map(u=>`<div class="task"><div>👤</div><div><b>${u.name}</b><div class="task-meta">${u.role}${u.name==="Dianne"||u.name==="Naveen"?" • Priority access":" • Add / modify"}</div></div></div>`).join("")}</div></div><div class="card section"><h2>🔌 Integrations</h2><div class="notice">Choose your provider, then connect through OAuth. Do not put passwords or API secrets in this HTML file.</div><div class="field"><label>Email provider</label><select id="emailProvider"><option>Google Workspace / Gmail</option><option>Microsoft 365 / Outlook</option></select></div><div class="field" style="margin-top:8px"><label>Calendar provider</label><select id="calProvider"><option>Google Calendar</option><option>Microsoft 365 / Outlook Calendar</option></select></div><div class="integration"><div class="integration-row"><span>✉️ Email</span><span class="status">${state.connections.email?"Connected":"Ready for OAuth"}</span><button class="btn small" onclick="connect('email')">${state.connections.email?"Disconnect":"Connect Email"}</button></div><div class="integration-row"><span>📅 Calendar</span><span class="status">${state.connections.calendar?"Connected":"Ready for OAuth"}</span><button class="btn small" onclick="connect('calendar')">${state.connections.calendar?"Disconnect":"Connect Calendar"}</button></div></div></div></div>`}
+function connect(k){state.connections[k]=!state.connections[k];save();toast(state.connections[k]?"Connection marked ready":"Connection cleared");render()}
+function switchUser(){let i=USERS.findIndex(x=>x.name===state.user);state.user=USERS[(i+1)%USERS.length].name;save();toast("Switched to "+state.user);render()}
+function exportXLS(){let rows=[["Type","Title","Location","Department","Amount","Due/Status","Assigned"],...state.tasks.map(t=>["Task",t.title,t.loc,t.dept,"",t.due,t.assignee]),...state.payments.map(p=>["Payment",p.title,p.loc,"",p.amount,p.status,p.due]),...state.purchases.map(p=>["Purchase",p.title,p.loc,"",p.amount,p.status,p.requester])];let table="<table><tr>"+rows[0].map(x=>"<th>"+esc(x)+"</th>").join("")+"</tr>"+rows.slice(1).map(r=>"<tr>"+r.map(x=>"<td>"+esc(x)+"</td>").join("")+"</tr>").join("")+"</table>";let blob=new Blob(["<html><head><meta charset='utf-8'></head><body>"+table+"</body></html>"],{type:"application/vnd.ms-excel"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="MN_Foods_Report.xls";a.click();URL.revokeObjectURL(a.href);toast("Excel report exported")}
+function downloadICS(){let start=new Date();start.setHours(8,0,0,0);let dt=start.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z/,"Z");let ics=`BEGIN:VCALENDAR\\nVERSION:2.0\\nPRODID:-//M&N Foods LLC//Dashboard//EN\\nBEGIN:VEVENT\\nUID:${Date.now()}@mnfoods\\nDTSTAMP:${dt}\\nDTSTART:${dt}\\nDURATION:PT15M\\nRRULE:FREQ=DAILY\\nSUMMARY:M&N Foods Daily CEO Reminder\\nDESCRIPTION:Review today's M&N Foods checklist, priority items, payments, purchasing and maintenance.\\nEND:VEVENT\\nEND:VCALENDAR`;let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([ics],{type:"text/calendar"}));a.download="MN-Foods-Daily-Reminder.ics";a.click()}
+render();
+</script>
+</body>
+</html>
